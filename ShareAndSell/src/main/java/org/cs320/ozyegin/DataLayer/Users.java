@@ -1,6 +1,5 @@
 package org.cs320.ozyegin.DataLayer;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -9,7 +8,7 @@ public class Users extends DbIntegration{
         super("Users");
         Statement statement = connection.createStatement();
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (" +
-                                "    id INTEGER PRIMARY KEY," +
+                                "    id INTEGER PRIMARY KEY AUTOINCREMENT," +
                                 "    name VARCHAR[64]," +
                                 "    mail VARCHAR[64]," +
                                 "    password VARCHAR[64]," +

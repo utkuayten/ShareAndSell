@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Varsayılan arka plan rengi */
+}
+
+header {
+    background-color: #007BFF; /* Mavi arka plan rengi */
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+.basket {
+    margin-right: 10px; /* Adjust the margin as needed */
+    flex: 1;
+    background-color: #ffffff; /* Beyaz arka plan rengi */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.recommended-products {
+    margin-left: 10px; /* Adjust the margin as needed */
+    flex: 1;
+    background-color: #ffffff; /* Beyaz arka plan rengi */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#basket-items,
+#recommended-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.basket-item,
+.recommended-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 50px; /* Örnek bir genişlik */
+    margin-right: 10px;
+}
+
+.product-name {
+    flex: 1;
+}
+
+.quantity,
+.price,
+.product-price {
+    margin-left: 20px;
+}
+
+#payment-button {
+    margin-top: 20px; /* Adjust the margin as needed */
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Diğer stillendirme özelliklerini buraya ekleyebilirsiniz */

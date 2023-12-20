@@ -5,8 +5,16 @@ body {
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('zyro-image.png');
+}
+
 header {
-    background-color: #143;
+
     color: #fff;
     text-align: center;
     padding: 20px 0;

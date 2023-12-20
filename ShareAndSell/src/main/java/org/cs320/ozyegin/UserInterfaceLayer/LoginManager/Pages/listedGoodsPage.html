@@ -5,7 +5,84 @@
     <meta charset="UTF-8">
     <title>Share&Sell - Market</title>
     <link rel="stylesheet" href="listedGoodsPage.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-image: url('zyro-image.png');
+            position: relative;
+        }
+
+        .background-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 5em;
+        }
+
+        header {
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .product-card {
+            position: relative;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            background-color: white;
+            z-index: 4;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-card h2 {
+            margin-top: 0;
+        }
+
+        .product-card p {
+            margin-bottom: 5px;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-to-basket-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
+<body>
 
 <header>
     <h1>Share&Sell - Market</h1>

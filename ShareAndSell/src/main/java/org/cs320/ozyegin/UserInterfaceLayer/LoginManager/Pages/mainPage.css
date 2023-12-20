@@ -6,16 +6,21 @@ body, h1, ul, footer {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f7f7; /* Lighter background color */
-    color: #333; /* Default text color */
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('zyro-image.png');
+    position: relative;
 }
 
 header {
-    background-color: #1a1a1a; /* Darker header background */
-    color: #fff; /* White header text */
+    background-color: transparent; /* Remove background color */
+    color: #fff;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: none; /* Remove the box shadow */
 }
 
 nav ul {
@@ -26,34 +31,34 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px; /* Increased spacing between navigation items */
+    margin: 0 15px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #444; /* Slightly darker text color */
-    padding: 8px 18px; /* Increased padding for better clickability */
+    color: #444;
+    padding: 8px 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: #f0f0f0; /* Lighter background on hover */
+    background-color: #f0f0f0;
 }
 
 main {
     padding: 20px;
-    margin: 20px auto; /* Center the main content */
-    max-width: 800px; /* Limit the width of the main content */
-    background-color: #fff; /* White background */
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #fff;
     border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 footer {
     text-align: center;
     padding: 15px;
-    background-color: #1a1a1a; /* Darker footer background */
-    color: #ccc; /* Lighter footer text */
+    /* Remove the background and set the text color to match the body */
+    color: #333;
 }

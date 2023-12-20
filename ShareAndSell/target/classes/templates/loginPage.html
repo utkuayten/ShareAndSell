@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/loginPage.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Share&Sell Marketplace</title>
+    <link rel="stylesheet" href="loginPage.css">
 </head>
+
 <body>
 <div class="login-container">
-    <h1>Login to Share&Sell</h1>
-    <form id="login-form">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+    <h1>Share & Sell</h1>
+    <form id="login-form" action="/login" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
         <button type="submit">Login</button>
     </form>
+    <!-- Add the "Sign Up" link -->
+    <a href="signUpPage.html">Sign Up</a>
 </div>
 
-<script src="../JS/login.js"></script>
+<script src="loginPage.js"></script>
 </body>
+
 </html>

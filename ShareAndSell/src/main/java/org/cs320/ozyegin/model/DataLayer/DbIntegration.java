@@ -14,7 +14,7 @@ public class DbIntegration
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:%s.db".formatted(dbName));
+            connection = DriverManager.getConnection("jdbc:sqlite:%s.db");
         }
         catch(SQLException e)
         {

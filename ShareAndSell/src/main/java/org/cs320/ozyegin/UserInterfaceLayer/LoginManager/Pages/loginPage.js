@@ -1,3 +1,4 @@
+
 document.getElementById("login-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
     // Perform login logic here (authentication, etc.)
@@ -8,6 +9,7 @@ document.getElementById("login-form").addEventListener("submit", function(event)
 
     // Here, you might perform validation and/or send a request to the server for authentication
 
+
     // For demonstration, simply logging the entered credentials to the console
     console.log("Username:", username);
     console.log("Password:", password);
@@ -16,3 +18,4 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     // For example:
     // window.location.href = "dashboard.html";
 });
+

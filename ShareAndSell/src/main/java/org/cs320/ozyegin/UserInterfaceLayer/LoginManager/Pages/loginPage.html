@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Share&Sell Marketplace</title>
-    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="loginPage.css">
 </head>
 <body>
 <div class="login-container">
     <h1>Login to Share&Sell</h1>
-    <form id="login-form">
+    <form id="login-form" action="/login" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
@@ -22,6 +22,6 @@
     </form>
 </div>
 
-<script src="../../LoginManager/login.js"></script>
+<script src="loginPage.js"></script>
 </body>
 </html>

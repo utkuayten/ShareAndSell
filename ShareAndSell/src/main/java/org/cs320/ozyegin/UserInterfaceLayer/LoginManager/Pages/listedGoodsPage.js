@@ -35,12 +35,19 @@ function displayProducts() {
             <img src="${product.imageUrl}" alt="${product.name}">
             <h2>${product.name}</h2>
             <p>${product.description}</p>
-            <p>Price: $${product.price}</p>
+            <div class="product-details">
+                <p>Price: $${product.price}</p>
+                <button class="add-to-basket-button" onclick="addToBasket(${product.id})">Add to Basket</button>
+            </div>
         `;
 
         productsList.appendChild(productCard);
     });
 }
 
-// Call the function to display products when the page loads
+function addToBasket(productId) {
+    // Implement the functionality to add the product to the basket
+    alert(`Product ${productId} added to basket!`);
+}
+
 window.onload = displayProducts;

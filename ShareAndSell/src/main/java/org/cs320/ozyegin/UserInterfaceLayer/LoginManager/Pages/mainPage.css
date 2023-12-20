@@ -1,0 +1,59 @@
+/* Reset default margin and padding */
+body, h1, ul, footer {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7; /* Lighter background color */
+    color: #333; /* Default text color */
+}
+
+header {
+    background-color: #1a1a1a; /* Darker header background */
+    color: #fff; /* White header text */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+nav ul li {
+    margin: 0 15px; /* Increased spacing between navigation items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #444; /* Slightly darker text color */
+    padding: 8px 18px; /* Increased padding for better clickability */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #f0f0f0; /* Lighter background on hover */
+}
+
+main {
+    padding: 20px;
+    margin: 20px auto; /* Center the main content */
+    max-width: 800px; /* Limit the width of the main content */
+    background-color: #fff; /* White background */
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #1a1a1a; /* Darker footer background */
+    color: #ccc; /* Lighter footer text */
+}

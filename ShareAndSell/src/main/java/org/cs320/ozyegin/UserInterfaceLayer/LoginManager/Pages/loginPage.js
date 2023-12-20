@@ -1,21 +1,29 @@
-
 document.getElementById("login-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
-    // Perform login logic here (authentication, etc.)
-    // For demonstration purposes, you can add your logic here or link it to your backend
-    // Example:
+
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    // Here, you might perform validation and/or send a request to the server for authentication
-
-
-    // For demonstration, simply logging the entered credentials to the console
-    console.log("Username:", username);
-    console.log("Password:", password);
-
-    // After validation/authentication, you can redirect the user to the appropriate page
-    // For example:
-    // window.location.href = "dashboard.html";
+    // Construct the request body with username and password
+    const data = { username, password };
+    console.log(data);
+    // Make a POST request to the login API
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Invalid username or password');
+            }
+            // Redirect to the main page upon successful login
+            window.location.href = "/profilePage.html";
+        })
+        .catch(error => {
+            console.error('Login failed:', error);
+            // Handle login failure or display error message to the user
+        });
 });
-

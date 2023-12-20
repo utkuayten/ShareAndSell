@@ -1,74 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>org.cs320.ozyegin</groupId>
+	<artifactId>ShareAndSell</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>springboot-html</name>
+	<description>Springboot html- okay java</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-    <groupId>org.cs320.ozyegin</groupId>
-    <artifactId>ShareAndSell</artifactId>
-    <version>1.0-SNAPSHOT</version>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.44.1.0</version>
+		</dependency>
+	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
-        <!-- ... -->
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>com.github.eirslett</groupId>
-                    <artifactId>frontend-maven-plugin</artifactId>
-                    <version>1.12.0</version>
-                    <executions>
-                        <execution>
-                            <id>npm-install</id>
-                            <goals>
-                                <goal>npm</goal>
-                            </goals>
-                            <configuration>
-                                <arguments>install</arguments>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>install node and npm</id>
-                            <goals>
-                                <goal>install-node-and-npm</goal>
-                            </goals>
-                            <configuration>
-                                <nodeVersion>v16.13.0</nodeVersion>
-                                <npmVersion>8.1.0</npmVersion>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>npm-install-sqlite3</id>
-                            <goals>
-                                <goal>npm</goal>
-                            </goals>
-                            <configuration>
-                                <arguments>install sqlite3</arguments>
-                            </configuration>
-                        </execution>
-
-                        <!-- Other executions for npm or Node.js tasks -->
-                    </executions>
-                </plugin>
-                <!-- Other plugins -->
-            </plugins>
-        </build>
-        <!-- ... -->
-
-
-
-    <dependencies>
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.44.1.0</version>
-        </dependency>
-    </dependencies>
 </project>
-
-

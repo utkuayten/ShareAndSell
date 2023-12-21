@@ -11,8 +11,8 @@
 	<groupId>org.cs320.ozyegin</groupId>
 	<artifactId>ShareAndSell</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>springboot-html</name>
-	<description>Springboot html- okay java</description>
+	<name>ShareAndSell</name>
+	<description>Course Project</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -37,7 +37,11 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.44.1.0</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

@@ -13,10 +13,14 @@ header {
     position: relative;
     z-index: 1;
 }
-
-main {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; /* Remove default body margin */
 }
 
 .basket,
@@ -28,6 +32,7 @@ main {
     z-index: 0;
     margin: 20px;
     background-color: #ffffff; /* Set the background color for the bubble */
+    background-size: 150%; /* Adjust the percentage to increase the size of the bubble background */
 }
 
 .basket::before,

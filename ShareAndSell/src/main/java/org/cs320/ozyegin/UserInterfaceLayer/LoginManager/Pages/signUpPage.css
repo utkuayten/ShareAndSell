@@ -6,19 +6,15 @@ body, h1, form {
 
 /* Apply a background color and center the form */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('zyro-image.png');
+    position: relative;
     height: 100vh;
-    margin: 0; /* Remove default body margin */
-}
-body {
-    background-image: url('/Users/yigitkoyuncu/Desktop/ShareAndSell/özü.jpeg'); /* Arkaplan resminin dosya yolu */
-    background-size: cover; /* Resmin ekran boyutuna göre ölçeklenmesi */
-    background-repeat: no-repeat; /* Resmin tekrarlanmaması */
-    background-attachment: fixed; /* Sayfa kaydırıldığında arkaplanın sabit kalması */
 }
 
 
@@ -32,6 +28,13 @@ body {
     width: 100%; /* Allow the form container to take up the available width */
     margin: 0 auto; /* Center the form container */
 }
+.signup-container {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
 
 h1 {
     margin-bottom: 20px;

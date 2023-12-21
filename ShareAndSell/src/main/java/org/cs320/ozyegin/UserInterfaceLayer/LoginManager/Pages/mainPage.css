@@ -13,7 +13,9 @@ body {
     background-size: cover;
     background-image: url('zyro-image.png');
     position: relative;
+    height: 100vh;
 }
+
 
 header {
     background-color: transparent; /* Remove background color */

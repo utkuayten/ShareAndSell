@@ -1,12 +1,17 @@
 /* Basic styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
     margin: 0;
     padding: 0;
+    background-size: cover;
+    background-image: url('zyro-image.png');
+    position: relative;
+    height: 100vh;
 }
-
 header {
-    background-color: #333;
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 20px 0;

@@ -3,28 +3,78 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Share&Sell - Create Ad</title>
+    <title>Share- Create Ad</title>
     <link rel="stylesheet" href="createAdPage.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 50px; /* Adjust the margin as needed to move the heading up */
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 100%; /* Make the label take up the full width */
+            text-align: left; /* Align the text to the left */
+            margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+            display: block;
+            width: 100%; /* Make the input take up the full width */
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body>
-<header>
-    <h1>Share&Sell - Create Ad</h1>
-</header>
 
 <main>
+    <h2>Share&Sell - Create Ad</h2>
     <form id="ad-form">
         <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="product-name" required><br><br>
+        <input type="text" id="product-name" name="product-name" required>
 
-        <label for="product-description">Product Description:</label><br>
-        <textarea id="product-description" name="product-description" rows="4" cols="50" required></textarea><br><br>
+        <label for="product-description">Product Description:</label>
+        <textarea id="product-description" name="product-description" rows="4" cols="50" required></textarea>
 
         <label for="product-price">Product Price:</label>
-        <input type="number" id="product-price" name="product-price" step="0.01" required><br><br>
+        <input type="number" id="product-price" name="product-price" step="0.01" required>
 
         <label for="product-image">Product Image URL:</label>
-        <input type="text" id="product-image" name="product-image" required><br><br>
+        <input type="text" id="product-image" name="product-image" required>
 
         <button type="submit">Create Ad</button>
     </form>

@@ -34,11 +34,25 @@ body {
     width: 100%; /* Allow the form container to take up the available width */
     margin: 0 auto; /* Center the form container */
 }
+/* Add this style to your CSS */
+/* Add this style to your CSS */
+.welcome-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    font-weight: bold; /* Add this line for bold font */
+    color: #333;
+}
+
+
 
 h1 {
     margin-bottom: 20px;
     color: #333;
 }
+
 
 label {
     display: block;

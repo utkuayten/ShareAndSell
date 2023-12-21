@@ -1,20 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-image: url('zyro-image.png');
-    position: relative;
-}
-
-.background-text {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    color: rgba(255, 255, 255, 0.1);
-    font-size: 5em;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; /* Remove default body margin */
 }
 
 header {
@@ -25,15 +16,12 @@ header {
     z-index: 1;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-}
-
 .products {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* Yatay olarak ortala */
+    align-items: flex-start; /* Üst üste yerleştir */
     position: relative;
     z-index: 3;
 }
@@ -42,23 +30,38 @@ main {
     position: relative;
     border: 1px solid #ccc;
     padding: 20px;
-    width: 300px;
+    width: 320px;
     background-color: white;
     z-index: 4;
+    text-align: center; /* Etiketleri ortala */
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
+    max-height: 150px; /* Yükseklik sınırlaması ekledik */
+    object-fit: cover; /* İmajın boyutunu korumasını sağlar */
     margin-bottom: 10px;
 }
 
+header {
+    position: absolute;
+    top: -40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
 .product-card h2 {
     margin-top: 0;
+    font-size: 2em; /* Etiket boyutunu küçült */
 }
 
 .product-card p {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    font-size: 1em; /* Etiket boyutunu küçült */
 }
 
 .product-details {
@@ -71,6 +74,6 @@ main {
     background-color: #007BFF;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 2px 0px;
     cursor: pointer;
 }

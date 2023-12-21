@@ -4,16 +4,7 @@ body, h1, form {
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-image: url('zyro-image.png');
-    position: relative;
-}
 
-/* Apply a background color and center the form */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -21,10 +12,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0; /* Remove default body margin */
+    margin: 0;
+}
+body {
+    background-image: url('../zyro-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.login-container {
+
+.signup-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -47,7 +45,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     width: calc(100% - 16px); /* Set the width to 100% minus the padding (8px on each side) */
     padding: 8px;
     margin-bottom: 10px; /* Add margin to the bottom of the input fields */
@@ -70,14 +69,17 @@ button[type="submit"]:hover {
     background-color: #45a049;
 }
 
-a {
+.signup-button {
+    background-color: #007bff;
+    color: white;
     text-decoration: none;
-    color: #007bff;
-    margin-top: 10px;
-    display: inline-block;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-a:hover {
-    text-decoration: underline;
-    color: #0056b3;
+.signup-button:hover {
+    background-color: #0056b3;
 }

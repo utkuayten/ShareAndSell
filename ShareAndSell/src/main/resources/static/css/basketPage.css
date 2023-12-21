@@ -2,14 +2,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Varsayılan arka plan rengi */
+    background-size: cover;
+    background-image: url('../zyro-image.png');
 }
 
 header {
-    background-color: #007BFF; /* Mavi arka plan rengi */
     padding: 15px;
     text-align: center;
     color: white;
+    position: relative;
+    z-index: 1;
 }
 
 main {
@@ -17,20 +19,26 @@ main {
     padding: 20px;
 }
 
-.basket {
-    margin-right: 10px; /* Adjust the margin as needed */
+.basket,
+.recommended-products {
     flex: 1;
-    background-color: #ffffff; /* Beyaz arka plan rengi */
     padding: 15px;
     border-radius: 8px;
+    position: relative;
+    z-index: 0;
+    margin: 20px;
+    background-color: #ffffff; /* Set the background color for the bubble */
 }
 
-.recommended-products {
-    margin-left: 10px; /* Adjust the margin as needed */
-    flex: 1;
-    background-color: #ffffff; /* Beyaz arka plan rengi */
-    padding: 15px;
-    border-radius: 8px;
+.basket::before,
+.recommended-products::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid transparent;
+    border-bottom-color: #ffffff; /* Set the same color as the background color */
 }
 
 #basket-items,
@@ -53,7 +61,7 @@ main {
 }
 
 .product-image {
-    max-width: 50px; /* Örnek bir genişlik */
+    max-width: 50px;
     margin-right: 10px;
 }
 
@@ -68,7 +76,7 @@ main {
 }
 
 #payment-button {
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 20px;
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
@@ -76,5 +84,3 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
-/* Diğer stillendirme özelliklerini buraya ekleyebilirsiniz */

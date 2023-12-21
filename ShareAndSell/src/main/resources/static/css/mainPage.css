@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     background-size: cover;
-    background-image: url('zyro-image.png');
+    background-image: url('../zyro-image.png');
     position: relative;
 }
 

@@ -5,8 +5,16 @@ body {
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('../zyro-image.png');
+}
+
 header {
-    background-color: #333;
+
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -16,16 +24,16 @@ main {
     padding: 20px;
 }
 
-.user-info {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+form {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.edit-form {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+label,
+input,
+textarea {
+    display: block;
+    margin-bottom: 10px;
 }
 
 button {

@@ -4,6 +4,15 @@ body, h1, form {
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('../zyro-image.png');
+    position: relative;
+}
+
 /* Apply a background color and center the form */
 body {
     font-family: Arial, sans-serif;

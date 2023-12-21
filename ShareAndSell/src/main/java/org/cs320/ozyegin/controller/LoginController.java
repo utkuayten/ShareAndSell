@@ -10,10 +10,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-	@GetMapping("/")
-	public String index() {
+	@GetMapping("/login")
+	public String directToLogin() {
 		return "loginPage";
 	}
-	
+
+
+	@GetMapping("/")
+	public String directToMain() {
+		return "mainPage";
+	}
+
+	@GetMapping("/register")
+	public String directToSignUp() {
+		return "signUpPage";
+	}
+
 
 }

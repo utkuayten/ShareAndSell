@@ -12,14 +12,13 @@ public class Users extends DbIntegration{
                                 "    id INTEGER PRIMARY KEY AUTOINCREMENT," +
                                 "    name VARCHAR[64]," +
                                 "    mail VARCHAR[64]," +
-                                "    password VARCHAR[64]," +
-                                "    rate FLOAT" +
+                                "    password VARCHAR[64]" +
                     ");");
         this.connection.close();
     }
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        //Users dbUsers = new Users();
+        Users dbUsers = new Users();
     }
 }

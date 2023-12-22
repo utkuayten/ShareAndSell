@@ -13,7 +13,6 @@ public class DbIntegration
         connection = null;
         try
         {
-            // create a database connection
             connection = DriverManager.getConnection("jdbc:sqlite:%s.db");
         }
         catch(SQLException e)

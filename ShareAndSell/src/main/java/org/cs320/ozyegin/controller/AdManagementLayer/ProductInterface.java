@@ -1,4 +1,4 @@
-package org.cs320.ozyegin.AdManagementLayer;
+package org.cs320.ozyegin.controller.AdManagementLayer;
 
 public interface ProductInterface {
 }

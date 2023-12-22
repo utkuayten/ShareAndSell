@@ -1,6 +1,7 @@
 package org.cs320.ozyegin.config;
 
 import org.cs320.ozyegin.service.UserService;
+import org.cs320.ozyegin.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 	
 	@Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -37,26 +38,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(
-				 "/registration**",
-	                "/js/**",
-	                "/css/**",
-	                "/img/**").permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
-		.and()
-		.logout()
-		.invalidateHttpSession(true)
-		.clearAuthentication(true)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/login?logout")
-		.permitAll();
+		http.authorizeRequests()
+				.antMatchers(
+						"/login").permitAll();
+//				.antMatchers("/login").hasAuthority("ROLE_LOGGED_IN")
+//				.anyRequest().authenticated()
+//				.and()
+//				.formLogin()
+//				.loginPage("/login")
+//				.permitAll()
+//				.and()
+//				.logout()
+//				.invalidateHttpSession(true)
+//				.clearAuthentication(true)
+//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//				.logoutSuccessUrl("/login?logout")
 	}
+
 
 }

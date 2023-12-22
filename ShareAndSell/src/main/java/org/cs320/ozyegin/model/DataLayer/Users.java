@@ -1,5 +1,6 @@
 package org.cs320.ozyegin.model.DataLayer;
 
+
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,7 +18,8 @@ public class Users extends DbIntegration{
         this.connection.close();
     }
 
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Users dbUsers = new Users();
+        //Users dbUsers = new Users();
     }
 }

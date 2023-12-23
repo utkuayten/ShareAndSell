@@ -4,16 +4,27 @@ public class UserRegistrationDto {
 	private String name;
 	private String email;
 	private String password;
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	private void setRole(String role) {
+		this.role = role;
+	}
+
+	private String role;
+
 	public UserRegistrationDto(){
 		
 	}
 	
-	public UserRegistrationDto(String name,  String email, String password) {
+	public UserRegistrationDto(String name,  String email, String password,String role) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.role = role;
 	}
 	public String getName() {
 		return name;

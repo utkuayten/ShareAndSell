@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User save(UserRegistrationDto registrationDto) {
+	public User save(UserRegistrationDto registrationDto) throws Exception {
 		String userRole = "LOGGED_IN"; // Set the role name
 
 		User user = new User().name(registrationDto.getName()).password(registrationDto.getPassword()).role(userRole).email(registrationDto.getEmail());

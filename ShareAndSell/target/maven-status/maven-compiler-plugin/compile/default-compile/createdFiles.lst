@@ -1,6 +1,7 @@
 org/cs320/ozyegin/config/SecurityConfiguration.class
 org/cs320/ozyegin/controller/Sell.class
 org/cs320/ozyegin/model/User.class
+org/cs320/ozyegin/SqlConfig.class
 org/cs320/ozyegin/controller/OperationLayer/TransactionManager.class
 org/cs320/ozyegin/controller/AdManagementLayer/ProductInterface.class
 org/cs320/ozyegin/controller/AdManagementLayer/OrderManager.class

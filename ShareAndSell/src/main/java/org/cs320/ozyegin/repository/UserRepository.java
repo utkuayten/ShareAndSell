@@ -35,7 +35,7 @@ public class UserRepository extends JdbcDaoSupport {
     }
 
     public User findByEmail(String email) {
-        if (email == null || email.isBlank()) {
+        if (email == null || email.isEmpty()) {
             return null;
         } else {
             try {

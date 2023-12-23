@@ -12,7 +12,8 @@ public class Users extends DbIntegration{
                                 "    id INTEGER PRIMARY KEY AUTOINCREMENT," +
                                 "    name VARCHAR[64]," +
                                 "    mail VARCHAR[64]," +
-                                "    password VARCHAR[64]" +
+                                "    password VARCHAR[64],"+
+                                "    role text"+
                     ");");
         this.connection.close();
     }

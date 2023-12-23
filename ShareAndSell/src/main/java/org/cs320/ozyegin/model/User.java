@@ -2,27 +2,11 @@ package org.cs320.ozyegin.model;
 
 
 public class User {
-	private int id;
+
+	private String mail;
 	private String name;
 	private String role;
-
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public User email(String email){
-		this.email = email;
-		return this;
-	}
+	private String password;
 
 	public String getPassword() {
 		return password;
@@ -36,9 +20,6 @@ public class User {
 		this.password = password;
 		return this;
 	}
-
-	private String email;
-	private String password;
 
 	public String getName() {
 		return name;
@@ -61,4 +42,17 @@ public class User {
 		this.role = role;
 		return this;
 	}
+
+	public void setEmail(String email) {
+		this.mail = email;
+	}
+	public String getEmail() {
+		return mail;
+	}
+
+	public User email(String email){
+		this.mail = email;
+		return this;
+	}
+
 }

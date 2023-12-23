@@ -1,4 +1,4 @@
-package org.cs320.ozyegin.web;
+package org.cs320.ozyegin.controller.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,6 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "index";
+		return "loginPage";
 	}
 }

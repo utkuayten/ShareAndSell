@@ -15,8 +15,6 @@ import java.util.Objects;
 @Repository
 public class UserRepository extends JdbcDaoSupport {
 
-    private final String findByEmailQuery = "SELECT * FROM main.users WHERE mail = ?";
-
     @Autowired
     public void setDatasource(DataSource dataSource) {
         super.setDataSource(dataSource);
@@ -26,7 +24,7 @@ public class UserRepository extends JdbcDaoSupport {
             new User()
                     .name(resultSet.getString("name"))
                     .password(resultSet.getString("password"))
-                    .email(resultSet.getString("email"))
+                    .email(resultSet.getString("mail"))
                     .role(resultSet.getString("role"));
 
     public User save(User user) {
@@ -40,6 +38,7 @@ public class UserRepository extends JdbcDaoSupport {
         } else {
             try {
                 JdbcTemplate template = Objects.requireNonNull(getJdbcTemplate());
+                String findByEmailQuery = "SELECT * FROM users WHERE mail = ?";
                 return template.queryForObject(findByEmailQuery, new Object[]{email}, userRowMapper);
             } catch (Exception ex) {
                 // Log the exception for debugging purposes

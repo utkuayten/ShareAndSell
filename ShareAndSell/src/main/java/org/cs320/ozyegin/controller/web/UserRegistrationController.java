@@ -1,7 +1,7 @@
-package org.cs320.ozyegin.web;
+package org.cs320.ozyegin.controller.web;
 
+import org.cs320.ozyegin.controller.web.dto.UserRegistrationDto;
 import org.cs320.ozyegin.service.UserService;
-import org.cs320.ozyegin.web.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

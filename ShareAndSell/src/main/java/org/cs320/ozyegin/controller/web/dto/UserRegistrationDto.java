@@ -1,4 +1,4 @@
-package org.cs320.ozyegin.web.dto;
+package org.cs320.ozyegin.controller.web.dto;
 
 public class UserRegistrationDto {
 	private String name;

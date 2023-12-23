@@ -1,13 +1,11 @@
 package org.cs320.ozyegin.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.cs320.ozyegin.model.User;
 import org.cs320.ozyegin.repository.UserRepository;
-import org.cs320.ozyegin.web.dto.UserRegistrationDto;
+import org.cs320.ozyegin.controller.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

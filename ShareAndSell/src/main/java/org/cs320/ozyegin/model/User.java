@@ -1,12 +1,22 @@
 package org.cs320.ozyegin.model;
 
 
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
+
 public class User {
 
 	private String mail;
 	private String name;
 	private String role;
 	private String password;
+
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
 
 	public String getPassword() {
 		return password;
@@ -55,4 +65,23 @@ public class User {
 		return this;
 	}
 
+	@Override
+	public String toString() {
+		return "User: " + this.name
+	         + "\nemail : " + this.mail
+		     + "\npassword : " + this.password
+			 + "\nrole : " +this.role;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class UserRegistrationController {
 
-	private UserService userService;
+	private final UserService userService;
 
 	public UserRegistrationController(UserService userService) {
 		super();
@@ -35,6 +35,6 @@ public class UserRegistrationController {
 	public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) throws Exception {
 		userService.save(registrationDto);
 		System.out.println(registrationDto.toString());
-		return "redirect:/registration?success";
+		return "login";
 	}
 }

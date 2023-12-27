@@ -1,0 +1,71 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Blurred effect for the role */
+  .role-blur {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adjust blur effect */
+    position: relative;
+  }
+
+  .role-blur:hover::after {
+    content: attr(data-text); /* Display the actual role */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+</style>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+</head>
+
+<body>
+<section>
+  <h1>Profile Page</h1>
+
+  <h4>Name: [[${user.name}]] <span class="role-blur">[[${user.role}]]</span></h4>
+  <h4>Email: [[${user.email}]]</h4>
+  <a href="/logout">Logout</a>
+</section>
+</body>
+
+</html>

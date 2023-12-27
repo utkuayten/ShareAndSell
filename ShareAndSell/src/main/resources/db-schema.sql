@@ -6,8 +6,12 @@ create table if not exists users(
     role text
 );
 
-CREATE TABLE advertisements (
-    id SERIAL PRIMARY KEY,
-    seller_id BIGINT NOT NULL,
-    image_data BYTEA
+create TABLE advertisements (
+                                id SERIAL PRIMARY KEY,
+                                title text,
+                                description text,
+                                quantity int,
+                                price int,
+                                seller_id int
 );
+

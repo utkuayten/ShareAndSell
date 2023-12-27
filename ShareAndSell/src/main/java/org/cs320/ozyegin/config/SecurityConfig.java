@@ -39,7 +39,7 @@ public class SecurityConfig {
 	{
 		http.csrf().disable()
 				.authorizeHttpRequests().requestMatchers("/","/register","/signIn","/saveUser").permitAll()
-				.requestMatchers("/user/**").authenticated().and()
+				.requestMatchers("/user/**","sellProduct").authenticated().and()
 				.formLogin().loginPage("/signIn").loginProcessingUrl("/userLogin")
 				.defaultSuccessUrl("/user/profile").permitAll();
 		return http.build();

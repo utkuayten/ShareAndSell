@@ -1,4 +1,4 @@
-package org.cs320.ozyegin.repositories;
+package org.cs320.ozyegin.data_layer;
 
 import org.cs320.ozyegin.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

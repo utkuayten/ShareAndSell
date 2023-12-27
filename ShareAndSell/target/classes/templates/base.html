@@ -46,12 +46,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                <!--/*@thymesVar id="user" type="org.cs320.ozyegin.model.User"*/-->
                 <th:block th:if="${user==NULL}">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="signIn">Login</a></li>
                 </th:block>
+                <!--/*@thymesVar id="user" type="org.cs320.ozyegin.model.User"*/-->
                 <th:block th:if="${user!=NULL}">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/user/home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/user/sell">Sell !</a></li>
                     <li class="nav-item"><a class="nav-link" href="/user/wallet">My Wallet</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>

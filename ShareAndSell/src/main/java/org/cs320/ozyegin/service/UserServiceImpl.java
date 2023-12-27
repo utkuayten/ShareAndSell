@@ -1,7 +1,7 @@
 package org.cs320.ozyegin.service;
 
 import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.repositories.UserRepository;
+import org.cs320.ozyegin.data_layer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

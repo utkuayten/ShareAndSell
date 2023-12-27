@@ -22,15 +22,6 @@ public class MainController {
 	@Autowired
 	private UserRepository userRepo;
 
-//	@ModelAttribute
-//	public void commonUser(Principal p, Model m) {
-//		if (p != null) {
-//			String email = p.getName();
-//			User user = userRepo.findByEmail(email);
-//			m.addAttribute("user", user);
-//		}
-//
-//	}
 
 	@GetMapping("/")
 	public String index() {

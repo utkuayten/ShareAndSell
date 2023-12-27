@@ -1,63 +1,54 @@
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
+  <style>
+    /* Styles for container */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      overflow:auto;
+      width: 600px;
+    }
 
-  section {
-    text-align: center;
-    margin-top: 50px;
-  }
+    /* Styles for the profile section */
+    .profile-section,
+    .wallet-section {
+      flex: 1;
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
 
-  h1 {
-    font-size: 2em;
-  }
+    .profile-section h1,
+    .wallet-section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
 
-  h4 {
-    margin-bottom: 10px;
-    font-weight: normal;
-  }
+    .profile-section h4,
+    .wallet-section p {
+      font-size: 18px;
+    }
 
-  a {
-    text-decoration: none;
-    color: #007bff;
-  }
+  </style>
+  <!DOCTYPE html>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org"
+        th:replace="base::layout(~{::section})">
 
-  a:hover {
-    text-decoration: underline;
-  }
 
-  /* Blurred effect for the role */
-  .role-blur {
-    color: transparent;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adjust blur effect */
-    position: relative;
-  }
+  <body>
+  <div class="container">
+    <section class="profile-section">
+      <h1>My Profile</h1>
+      <h4>[[${user.name}]]</h4>
+      <h4>[[${user.email}]]</h4>
+    </section>
+    <section class="wallet-section">
+      <h2>My Wallet</h2>
+      <p>Balance: Test</p>
+    </section>
+  </div>
+  </body>
 
-  .role-blur:hover::after {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.0); /* Adjust blur effect */
-  }
-</style>
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
+  </html>
 
-<head>
-  <meta charset="UTF-8">
-  <title>User Profile</title>
-</head>
-
-<body>
-<section>
-  <h1>Profile Page</h1>
-
-  <h4>Name: [[${user.name}]] </h4>
-  <h4>Email: [[${user.email}]]</h4>
-  <h4><span class="role-blur">[[${user.role}]]</span></h4>
-  <a href="/logout">Logout</a>
-</section>
-</body>
-
-</html>

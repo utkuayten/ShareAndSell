@@ -97,6 +97,8 @@ public class Advertisement {
         return date;
     }
 
+    public String getDateString(){return date.toString().substring(0,10);};
+
     public void setDate(Date date) {
         this.date = date;
     }

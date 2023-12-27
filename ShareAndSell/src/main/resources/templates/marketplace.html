@@ -1,0 +1,107 @@
+<style>
+
+
+.marketplace-items {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px; /* Adjust the gap between items */
+}
+
+.marketplace-items > div {
+border: 1px solid #ccc;
+border-radius: 8px;
+padding: 15px;
+width: 300px;
+background-color: #28a745;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.marketplace-items > div:hover {
+transform: translateY(-5px); /* Adjust the hover effect */
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.marketplace-items > div:nth-child(even) {
+background-color: #c3e6cb; /* Green background */
+}
+
+h3 {
+font-size: 1.5em;
+margin-bottom: 10px;
+    color: #fff;
+}
+
+p {
+color: #fff;
+}
+
+
+.btn {
+display: inline-block;
+padding: 8px 16px;
+text-align: center;
+text-decoration: none;
+background-color: #13593c;
+color: #fff;
+border-radius: 5px;
+transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: gray; /* Darker shade on hover */
+}
+
+.price-input {
+    border: none;
+    width: 50px;
+    background-color: transparent;
+    text-align: end;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.date-input {
+    border: none;
+    background-color: transparent;
+    font-style: italic;
+    color: #ffffff;
+
+}
+
+</style>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace</title>
+</head>
+<body>
+<section>
+    <h1>Welcome to the Marketplace</h1>
+    <div class="marketplace-items">
+        <!-- Loop through advertisements and display details -->
+            <!--/*@thymesVar id="advertisements" type="org.cs320.ozyegin.model.Advertisement"*/-->
+        <div th:each="advertisement : ${advertisements}">
+            <h3 th:text="${advertisement.title}"></h3>
+            <p th:text="${advertisement.description}"></p>
+            <p>
+                Price: <label>
+                <input type="text" th:value="${advertisement.price}"  class="price-input" readonly>
+            </label>
+                <span>$</span>
+            </p>
+            <p>
+                Date: <label>
+                <input type="text" th:value="${advertisement.getDateString()}" class="date-input" readonly>
+            </label>
+            </p>
+            <a th:href="@{'/details/' + ${advertisement.id}}" class="btn btn-primary">View Details</a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

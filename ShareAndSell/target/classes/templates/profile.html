@@ -32,21 +32,12 @@
   /* Blurred effect for the role */
   .role-blur {
     color: transparent;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adjust blur effect */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adjust blur effect */
     position: relative;
   }
 
   .role-blur:hover::after {
-    content: attr(data-text); /* Display the actual role */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #ccc;
-    padding: 5px;
-    border-radius: 5px;
-    z-index: 1;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.0); /* Adjust blur effect */
   }
 </style>
 <!DOCTYPE html>
@@ -62,8 +53,9 @@
 <section>
   <h1>Profile Page</h1>
 
-  <h4>Name: [[${user.name}]] <span class="role-blur">[[${user.role}]]</span></h4>
+  <h4>Name: [[${user.name}]] </h4>
   <h4>Email: [[${user.email}]]</h4>
+  <h4><span class="role-blur">[[${user.role}]]</span></h4>
   <a href="/logout">Logout</a>
 </section>
 </body>

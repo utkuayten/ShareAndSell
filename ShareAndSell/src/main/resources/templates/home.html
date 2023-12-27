@@ -1,124 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
 <head>
-    <meta charset="UTF-8">
-    <title>Startup - Share and Sell</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
 
-        .container {
-            margin-top: 50px;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 15px;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .text-success {
-            color: #28a745;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo img {
-            width: 200px; /* Adjust as needed */
-            height: auto;
-        }
-    </style>
 </head>
-
 <body>
+
 <section>
-    <div class="container">
-        <div class="logo">
-            <img src="path_to_your_logo_image" alt="Startup Logo">
-        </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-header text-center fs-4">Register Page</div>
+    <h1>Home Page</h1>
 
-                    <th:block th:if="${session.msg}">
-                        <p class="text-center text-success fs-4">[[${session.msg}]]</p>
-                    </th:block>
-
-                    <div class="card-body">
-                        <form action="saveUser" method="post">
-                            <div class="mb-3">
-                                <label>Enter Full Name</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label>Enter Email</label>
-                                <input type="text" name="email" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label>Enter Password</label>
-                                <input type="password" name="password" class="form-control">
-                            </div>
-                            <button class="btn btn-primary col-md-12">Register</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
-</body>
 
+</body>
 </html>

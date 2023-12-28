@@ -21,3 +21,14 @@ create TABLE wallets (
                          balance int
 );
 
+
+create TABLE transactions (
+                         id SERIAL PRIMARY KEY,
+                         seller_id int,
+                         buyer_id int,
+                         product_id int,
+                         price int,
+                         quantity int
+
+);
+

@@ -15,6 +15,7 @@ public class Wallet {
     private int balance;
 
     public Wallet(){
+        super();
     }
 
     public Wallet(Long id, Long owner_id, int balance) {

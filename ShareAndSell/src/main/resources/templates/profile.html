@@ -1,45 +1,6 @@
-  <style>
-    /* Styles for container */
-    .container {
-      display: flex;
-      justify-content: space-between;
-      overflow:auto;
-      width: 600px;
-    }
-
-    /* Styles for the profile section */
-    .profile-section,
-    .wallet-section {
-      flex: 1;
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      margin: 10px;
-    }
-
-    .profile-section h1,
-    .wallet-section h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .profile-section h4,
-    .wallet-section p {
-      font-size: 18px;
-    }
-
-    .blurred{
-      filter: blur(1px);
-    }
-
-  </style>
-  <!DOCTYPE html>
+ <!DOCTYPE html>
   <html lang="en" xmlns:th="http://www.thymeleaf.org"
-        th:replace="base::layout(~{::section})">
-
-
+        th:replace="~{base::layout(~{::section})}">
   <body>
   <div class="container">
     <section class="profile-section">
@@ -51,6 +12,10 @@
       <h2>My Wallet</h2>
       <p>wallet id: [[${wallet.id}]]</p>
       <p>balance: [[${wallet.balance}]]</p>
+      <form th:if="${showButton}" th:action="@{/confirm}" method="post">
+        <input type="hidden" th:name="newBalance" th:value="${wallet.balance}" />
+        <input type="submit" value="Confirm">
+      </form>
     </section>
   </div>
 

@@ -62,11 +62,10 @@
     }
 </style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
-
 </head>
 
 <body>
@@ -98,7 +97,8 @@
                             <div class="mb-3">
                                 <label>Password : </label>
                                 <label>
-                                    <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Enter your password">
                                 </label>
                             </div>
                             <button class="btn btn-primary col-md-12">Register</button>

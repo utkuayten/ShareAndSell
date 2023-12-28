@@ -26,12 +26,6 @@ public class MainController {
 	private UserService userService;
 
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
-	private AdvertService advertService;
-
-	@Autowired
 	private AdvertRepository advertRepository;
 
 	@Autowired

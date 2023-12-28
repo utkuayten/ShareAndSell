@@ -1,0 +1,65 @@
+/* Navbar styles */
+.navbar {
+    background-color: #333; /* Dark background color */
+    padding: 15px; /* Padding around the navbar */
+    font-family: Arial, sans-serif; /* Font for navbar text */
+    /* Additional styles for the navbar */
+}
+
+.navbar-brand {
+    color: #fff; /* Color of the brand/logo text */
+    font-size: 24px; /* Font size for the brand/logo */
+    text-decoration: none; /* Remove underline */
+    /* Additional styles for the brand/logo */
+}
+
+.navbar-nav {
+    list-style: none; /* Remove default list styles */
+    display: flex; /* Arrange navbar items horizontally */
+}
+
+.nav-item {
+    margin-right: 10px; /* Spacing between navbar items */
+    /* Additional styles for each navbar item */
+}
+
+.nav-link {
+    color: #fff; /* Color of the links in the navbar */
+    text-decoration: none; /* Remove underline */
+    /* Additional styles for the links */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline on hover */
+    /* Additional styles for link hover state */
+}
+
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: blue;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    color: blue;
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-left: auto;
+}
+

@@ -30,6 +30,10 @@
       font-size: 18px;
     }
 
+    .blurred{
+      filter: blur(1px);
+    }
+
   </style>
   <!DOCTYPE html>
   <html lang="en" xmlns:th="http://www.thymeleaf.org"
@@ -40,14 +44,16 @@
   <div class="container">
     <section class="profile-section">
       <h1>My Profile</h1>
-      <h4>[[${user.name}]]</h4>
-      <h4>[[${user.email}]]</h4>
+      <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
+      <p>Contacts: [[${user.email}]]</p>
     </section>
     <section class="wallet-section">
       <h2>My Wallet</h2>
-      <p>Balance: Test</p>
+      <p>wallet id: [[${wallet.id}]]</p>
+      <p>balance: [[${wallet.balance}]]</p>
     </section>
   </div>
+
   </body>
 
   </html>

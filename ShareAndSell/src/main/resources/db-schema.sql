@@ -15,3 +15,9 @@ create TABLE advertisements (
                                 seller_id int
 );
 
+create TABLE wallets (
+                         id SERIAL PRIMARY KEY,
+                         owner_id int,
+                         balance int
+);
+

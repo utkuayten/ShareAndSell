@@ -3,7 +3,9 @@ package org.cs320.ozyegin.controller;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.User;
+import org.cs320.ozyegin.model.Wallet;
 import org.cs320.ozyegin.service.AdvertService;
+import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -21,6 +24,9 @@ public class UserController {
 
     @Autowired
     private AdvertService advertService;
+
+    @Autowired
+    private WalletService walletService;
 
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
@@ -42,6 +48,9 @@ public class UserController {
     public String profile(Principal p, Model m) {
         User user = userRepository.findByEmail(p.getName());
         m.addAttribute("user", user);
+        Wallet wallet = walletService.findWalletByOwner_id(user);
+        System.out.println(wallet);
+        m.addAttribute("wallet",wallet);
         return "profile";
     }
 

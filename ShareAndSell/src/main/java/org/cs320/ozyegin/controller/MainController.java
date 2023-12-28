@@ -8,8 +8,10 @@ import org.cs320.ozyegin.data_layer.AdvertRepository;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.User;
 import org.cs320.ozyegin.data_layer.UserRepository;
+import org.cs320.ozyegin.model.Wallet;
 import org.cs320.ozyegin.service.AdvertService;
 import org.cs320.ozyegin.service.UserService;
+import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,9 @@ public class MainController {
 
 	@Autowired
 	private AdvertRepository advertRepository;
+
+	@Autowired
+	private WalletService walletService;
 
 	@GetMapping("/")
 	public String index() {
@@ -62,6 +67,7 @@ public class MainController {
 		} else {
 			session.setAttribute("msg", "Error : Something went wrong !");
 		}
+		walletService.saveWallet(new Wallet(),new_user);
 		return "register";
 	}
 }

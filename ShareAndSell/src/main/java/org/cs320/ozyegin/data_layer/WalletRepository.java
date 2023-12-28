@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
 
-
     @Query("SELECT wallet FROM Wallet wallet WHERE wallet.owner_id = :owner_id")
     Wallet findByOwner_id(@Param("owner_id") Long owner_id);
 }

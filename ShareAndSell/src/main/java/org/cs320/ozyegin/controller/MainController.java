@@ -70,4 +70,5 @@ public class MainController {
 		walletService.saveWallet(new Wallet(),new_user);
 		return "register";
 	}
+
 }

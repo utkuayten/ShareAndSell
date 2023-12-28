@@ -71,6 +71,7 @@ transition: background-color 0.3s ease-in-out;
 
 }
 
+
 </style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
@@ -87,7 +88,7 @@ transition: background-color 0.3s ease-in-out;
             <!--/*@thymesVar id="advertisements" type="org.cs320.ozyegin.model.Advertisement"*/-->
         <div th:each="advertisement : ${advertisements}">
             <h3 th:text="${advertisement.title}"></h3>
-            <p th:text="${advertisement.description}"></p>
+            <p th:text="${advertisement.quantity}"></p>
             <p>
                 Price: <label>
                 <input type="text" th:value="${advertisement.price}"  class="price-input" readonly>
@@ -99,7 +100,22 @@ transition: background-color 0.3s ease-in-out;
                 <input type="text" th:value="${advertisement.getDateString()}" class="date-input" readonly>
             </label>
             </p>
-            <a th:href="@{'/details/' + ${advertisement.id}}" class="btn btn-primary">View Details</a>
+            <div style="display: flex; align-items: center;">
+                <!-- Link for View Details -->
+                <a th:href="@{'/details/' + ${advertisement.id}}" class="btn btn-primary" style="margin-right: 10px;">View Details</a>
+
+                <!-- Form for specifying the quantity -->
+                <form th:action="@{'/user/giveOrder/' + ${advertisement.id}}" method="post">
+                    <label for="quantity"></label>
+                    <select id="quantity" name="quantity">
+                        <!-- Loop to generate options dynamically based on advert.quantity -->
+                        <option th:each="i : ${#numbers.sequence(1, advertisement.quantity)}"
+                                th:value="${i}" th:text="${i}"></option>
+                    </select>
+                    <input type="submit" value="Order Now" class="btn btn-secondary">
+                </form>
+            </div>
+
         </div>
     </div>
 </section>

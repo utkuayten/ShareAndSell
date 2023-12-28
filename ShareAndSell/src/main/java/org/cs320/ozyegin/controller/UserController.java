@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -27,6 +28,7 @@ public class UserController {
 
     @Autowired
     private WalletService walletService;
+
 
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
@@ -60,4 +62,20 @@ public class UserController {
         m.addAttribute("user", user);
         return "index";
     }
+
+    @GetMapping("/user/marketplace")
+    public String marketPlace(Principal p,Model model){
+        User user = userRepository.findByEmail(p.getName());
+        model.addAttribute("user", user);
+        List<Advertisement> adverts = advertService.findAllAdvertisements();
+        model.addAttribute("advertisements", adverts);
+        return "marketplace";
+    }
+
 }
+
+//TODO: Redundancy problem can be solve by doing this ?
+//private void addUserDetails(Model model, Principal p) {
+//    User user = getUserByEmail(p.getName());
+//    model.addAttribute("user", user);
+//}

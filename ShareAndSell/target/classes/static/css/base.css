@@ -1,65 +1,30 @@
-/* Navbar styles */
-.navbar {
-    background-color: #333; /* Dark background color */
-    padding: 15px; /* Padding around the navbar */
-    font-family: Arial, sans-serif; /* Font for navbar text */
-    /* Additional styles for the navbar */
-}
-
-.navbar-brand {
-    color: #fff; /* Color of the brand/logo text */
-    font-size: 24px; /* Font size for the brand/logo */
-    text-decoration: none; /* Remove underline */
-    /* Additional styles for the brand/logo */
-}
-
-.navbar-nav {
-    list-style: none; /* Remove default list styles */
-    display: flex; /* Arrange navbar items horizontally */
-}
-
-.nav-item {
-    margin-right: 10px; /* Spacing between navbar items */
-    /* Additional styles for each navbar item */
-}
-
-.nav-link {
-    color: #fff; /* Color of the links in the navbar */
-    text-decoration: none; /* Remove underline */
-    /* Additional styles for the links */
-}
-
-.nav-link:hover {
-    text-decoration: underline; /* Underline on hover */
-    /* Additional styles for link hover state */
-}
-
-body, h1, p {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    background-color: #eaf4ea; /* Light green */
 }
 
-nav {
-    background-color: blue;
+h3,
+p,
+li {
+    color: #006400; /* Dark green */
 }
 
-.navbar-brand,
-.nav-link {
-    color: #fff;
+.card {
+    background-color: #c8e6c9; /* Pale green */
+    border: 1px solid #228B22; /* Forest green */
 }
 
-.navbar-nav .nav-item:hover .nav-link {
-    color: blue;
+input[type="text"],
+input[type="number"],
+textarea {
+    border: 1px solid #006400; /* Dark green */
 }
 
-.navbar-nav .nav-item:last-child {
-    margin-left: auto;
+.btn-primary {
+    background-color: #006400; /* Dark green */
+    border-color: #006400; /* Dark green */
 }
 
+.btn-primary:hover {
+    background-color: #228B22; /* Forest green */
+    border-color: #228B22; /* Forest green */
+}

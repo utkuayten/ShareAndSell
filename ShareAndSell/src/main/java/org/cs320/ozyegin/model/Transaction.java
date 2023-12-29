@@ -10,22 +10,24 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int seller_id;
-    private int buyer_id;
-    private int product_id;
+    private Long seller_id;
+    private Long buyer_id;
+    private Long product_id;
     private int price;
     private int quantity;
-
+    private String status;
     public Transaction(){
         super();
     }
 
-    public Transaction(Long id, int seller_id, int product_id, int price, int quantity) {
+    public Transaction(Long id, Long seller_id, Long product_id,Long buyer_id, int price, int quantity,String status) {
         this.id = id;
         this.seller_id = seller_id;
+        this.buyer_id = buyer_id;
         this.product_id = product_id;
         this.price = price;
         this.quantity = quantity;
+        this.status = status;
     }
 
     public Long getId() {
@@ -36,27 +38,27 @@ public class Transaction {
         this.id = id;
     }
 
-    public int getSeller_id() {
+    public Long getSeller_id() {
         return seller_id;
     }
 
-    public void setSeller_id(int seller_id) {
+    public void setSeller_id(Long seller_id) {
         this.seller_id = seller_id;
     }
 
-    public int getBuyer_id() {
+    public Long getBuyer_id() {
         return buyer_id;
     }
 
-    public void setBuyer_id(int buyer_id) {
+    public void setBuyer_id(Long buyer_id) {
         this.buyer_id = buyer_id;
     }
 
-    public int getProduct_id() {
+    public Long getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(int product_id) {
+    public void setProduct_id(Long product_id) {
         this.product_id = product_id;
     }
 
@@ -74,5 +76,13 @@ public class Transaction {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

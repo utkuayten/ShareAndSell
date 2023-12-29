@@ -24,6 +24,8 @@ public class MainController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRepository userRepository;
 
 	@Autowired
 	private AdvertRepository advertRepository;
@@ -46,6 +48,7 @@ public class MainController {
 		return "login";
 	}
 
+
 	@GetMapping("/marketplace")
 	public String marketPlace(Model model){
 		List<Advertisement> adverts = advertRepository.findAllAdverts();
@@ -58,11 +61,13 @@ public class MainController {
 		User new_user = userService.saveUser(user);
 		if (new_user != null) {
 			session.setAttribute("msg", "Register successfully");
+			walletService.saveWallet(new Wallet(),new_user);
 		} else {
 			session.setAttribute("msg", "Error : Something went wrong !");
 		}
-		walletService.saveWallet(new Wallet(),new_user);
-		return "register";
+		return "redirect:/";
 	}
+
+
 
 }

@@ -28,7 +28,7 @@ create TABLE transactions (
                          buyer_id int,
                          product_id int,
                          price int,
-                         quantity int
-
+                         quantity int,
+                         status text
 );
 

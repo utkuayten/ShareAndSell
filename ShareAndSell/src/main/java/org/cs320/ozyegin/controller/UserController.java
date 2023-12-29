@@ -70,18 +70,21 @@ public class UserController {
     }
 
 
-    @PostMapping ("/user/placeOrder/{advertisementId}")
-    public String placeOrder(@PathVariable("advertisementId") Long advertisementId, Model model) {
-        // Logic to place the order for the given advertisement ID
-        // Assuming you have logic here to perform the order placement
+    @PostMapping("/user/placeOrder")
+    public String placeOrder(@ModelAttribute Advertisement advert, Principal p){
+        User buyer = userRepository.findByEmail(p.getName());
 
-        // Set the 'showButton' variable to true to display the confirmation button
-        model.addAttribute("showButton", true); // This sets showButton to true for displaying the button
-        System.out.println(advertisementId);
-        // You might also need to retrieve and set other necessary model attributes for the profile page
 
-        // Redirect to the profile page after placing the order
-        return "redirect:/user/profile?showButton=true"; // Replace with your actual profile URL
+
+        Advertisement new_advert = advertService.saveAdvertisement(advert);
+        return "redirect:/user/sell";
+    }
+
+    @GetMapping ("/user/showOrder")
+    public String showOrders(Principal p, Model m) {
+        User user = userRepository.findByEmail(p.getName());
+        m.addAttribute("user", user);
+        return "orders";
     }
 
 

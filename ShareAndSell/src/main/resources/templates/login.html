@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{base::layout(~{::section})}"
-
->
+      th:replace="base::layout(~{::section})">
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
@@ -24,7 +22,6 @@
                     </th:block>
                     <div class="card-body">
                         <form action="/userLogin" method="post">
-
                             <div class="mb-3">
                                 <label>Enter Email</label> <label>
                                 <input type="text" name="username"

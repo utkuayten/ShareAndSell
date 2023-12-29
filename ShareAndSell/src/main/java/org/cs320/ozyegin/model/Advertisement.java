@@ -2,10 +2,7 @@ package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Objects;
 
 
 @Entity

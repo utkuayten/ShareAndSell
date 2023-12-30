@@ -43,6 +43,8 @@
       <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
       <p>Contacts: [[${user.email}]]</p>
     </section>
+
+
     <section class="wallet-section">
       <h2>My Wallet</h2>
       <p>wallet id: [[${wallet.id}]]</p>
@@ -52,7 +54,25 @@
         <input type="submit" value="Confirm">
       </form>
     </section>
+
+  <!--  <section>
+      <img th:src="${imageSrc}" alt="Image">
+    </section> -->
   </div>
+
+  <section>
+
+    <div>
+      <form action = "saveImage" method="post">
+        <label>Photo</label>
+        <label>
+          <input type="file" name="file" class="form-control">
+          <input type="text" name="id" class="form-control">
+          <input type="submit" value="Upload">
+        </label>
+      </form>
+    </div>
+  </section>
 
   </body>
 

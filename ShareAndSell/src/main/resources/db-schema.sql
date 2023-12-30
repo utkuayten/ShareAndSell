@@ -6,7 +6,7 @@ create table if not exists users(
     role text
 );
 
-create TABLE advertisements (
+create TABLE if not exists advertisements (
                                 id SERIAL PRIMARY KEY,
                                 title text,
                                 description text,
@@ -15,14 +15,14 @@ create TABLE advertisements (
                                 seller_id int
 );
 
-create TABLE wallets (
+create TABLE if not exists wallets (
                          id SERIAL PRIMARY KEY,
                          owner_id int,
                          balance int
 );
 
 
-create TABLE transactions (
+create TABLE if not exists transactions (
                          id SERIAL PRIMARY KEY,
                          seller_id int,
                          buyer_id int,
@@ -32,3 +32,10 @@ create TABLE transactions (
                          status text
 );
 
+create TABLE if not exists images (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) UNIQUE,
+    type varchar(30),
+    owner_id int,
+    imageData bytea
+);

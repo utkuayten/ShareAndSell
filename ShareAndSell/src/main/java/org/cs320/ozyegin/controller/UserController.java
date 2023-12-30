@@ -1,11 +1,9 @@
 package org.cs320.ozyegin.controller;
 
 import org.cs320.ozyegin.data_layer.UserRepository;
-import org.cs320.ozyegin.model.Advertisement;
-import org.cs320.ozyegin.model.Transaction;
-import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.model.Wallet;
+import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.AdvertService;
+import org.cs320.ozyegin.service.ImageService;
 import org.cs320.ozyegin.service.TransactionService;
 import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,9 @@ public class UserController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private ImageService imageService;
 
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
@@ -67,6 +68,9 @@ public class UserController {
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
+      /*  String base64Image = java.util.Base64.getEncoder().encodeToString(imageService.findImageByOwner_id(user).getImageData());
+        String image = "data:image/*;base64," + base64Image;
+        m.addAttribute("image", image);*/
         return "profile";
     }
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Basket Page</title>
+    <style>
+        body {
+            background-color: #eaf4ea; /* Light green background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff; /* White background for container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        .card {
+            background-color: #f9f9f9; /* Light gray background for cards */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        .card-body {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title {
+            flex-grow: 1; /* Allow the title to expand */
+            margin-bottom: 0; /* Remove default margin */
+        }
+
+        .card-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .tick-button,
+        .cancel-button {
+            margin-left: 10px; /* Adjust space between buttons */
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .tick-button img,
+        .cancel-button img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="container">
+        <h1>Basket Page</h1>
+        <div class="row">
+            <!-- Example advertisement cards -->
+            <div class="col-md-4 mb-4" th:each="ad : ${basketAds}">
+                <div class="card">
+                    <img th:src="@{${ad.product_id}}" class="card-img-top" alt="Ad Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${ad.quantity}">Ad Title</h5>
+                        <div class="card-buttons">
+                            <!-- Add tick and cancel buttons -->
+                            <button class="tick-button" title="Tick">
+                                <img src="../static/check.png" alt="Tick">
+                            </button>
+                            <button class="cancel-button" title="Cancel">
+                                <img src="../static/cancel.png" alt="Cancel">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more advertisement cards dynamically based on the basket items -->
+        </div>
+    </div>
+</section>
+</body>
+</html>

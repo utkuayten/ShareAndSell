@@ -14,9 +14,10 @@ public interface AdvertRepository extends JpaRepository<Advertisement, Long> {
 
     @Query("SELECT advert FROM Advertisement advert WHERE advert.title = :title")
     Advertisement findByTitle(@Param("title") String title);
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.id = :id")
+    Advertisement findByID(@Param("id") Long id);
 
     @Query("SELECT advert FROM Advertisement advert ")
     List<Advertisement> findAllAdverts();
-
 
 }

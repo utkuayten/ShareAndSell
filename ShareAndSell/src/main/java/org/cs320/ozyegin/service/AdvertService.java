@@ -10,4 +10,6 @@ public interface AdvertService {
 
     Advertisement saveAdvertisement(Advertisement advertisement);
     List<Advertisement> findAllAdvertisements();
+
+    Advertisement findAdvertByID(Long id);
 }

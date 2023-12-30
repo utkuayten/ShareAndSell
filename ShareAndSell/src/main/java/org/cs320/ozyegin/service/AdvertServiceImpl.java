@@ -23,4 +23,9 @@ public class AdvertServiceImpl implements AdvertService{
     public List<Advertisement> findAllAdvertisements() {
         return advertRepository.findAllAdverts();
     }
+
+    @Override
+    public Advertisement findAdvertByID(Long id) {
+        return advertRepository.findByID(id);
+    }
 }

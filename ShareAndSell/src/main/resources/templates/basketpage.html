@@ -64,26 +64,31 @@
         <h1>Basket Page</h1>
         <div class="row">
             <!-- Example advertisement cards -->
-            <div class="col-md-4 mb-4" th:each="ad : ${basketAds}">
+            <!--/*@thymesVar id="transactions" type="org.cs320.ozyegin.model.Transaction"*/-->
+            <div class="col-md-4 mb-4" th:each="transaction : ${transactions}">
                 <div class="card">
-                    <img th:src="@{${ad.product_id}}" class="card-img-top" alt="Ad Image">
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${ad.quantity}">Ad Title</h5>
+                        <h5 class="card-title" th:text="${transaction.price}">Ad Title</h5>
                         <div class="card-buttons">
                             <!-- Add tick and cancel buttons -->
                             <button class="tick-button" title="Tick">
-                                <img src="../static/check.png" alt="Tick">
+                                <img th:src="@{check.png}" alt="Tick Image">
                             </button>
+
                             <button class="cancel-button" title="Cancel">
-                                <img src="../static/cancel.png" alt="Cancel">
+                                <img th:src="@{cancel.png}" alt="Cancel Image">
                             </button>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Add more advertisement cards dynamically based on the basket items -->
         </div>
     </div>
+
 </section>
 </body>
 </html>

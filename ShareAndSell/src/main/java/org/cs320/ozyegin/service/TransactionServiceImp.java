@@ -6,7 +6,6 @@ import org.cs320.ozyegin.data_layer.WalletRepository;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.Transaction;
 import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.model.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +36,16 @@ public class TransactionServiceImp implements TransactionService {
         return transactionRepository.findAllTransactions();
     }
 
+    @Override
+    public List<Transaction> findBasket(User buyer) {
+        return transactionRepository.findBuyerTransactionByStatus(buyer.getId(), "STATUS_IN_BASKET");
+    }
+
+
 //    @Override
 //    public List<Transaction> findBasket(User user) {
 //        return transactionRepository.findBasket(user.getId());
 //    }
+
 }
 

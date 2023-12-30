@@ -57,7 +57,7 @@ public class UserController {
         User seller = userService.findByID(advert.getSeller_id());
         User buyer = userRepository.findByEmail(p.getName());
         transaction.setQuantity(quantity);
-        transactionService.saveTransaction(t,seller,buyer,advert);
+        transactionService.saveTransaction(transaction,seller,buyer,advert);
         return "redirect:/user/marketplace";
     }
 
@@ -85,6 +85,20 @@ public class UserController {
         model.addAttribute("advertisements", adverts);
         return "marketplace";
     }
+
+    @GetMapping("/user/basket")
+    public String basketPage(Principal p,Model model){
+        User user = userRepository.findByEmail(p.getName());
+        model.addAttribute("user", user);
+        List<Transaction> basket = transactionService.findBasket(user);
+        model.addAttribute("transactions", basket);
+        for (Transaction transaction : basket) {
+            System.out.println(transaction);
+        }
+
+        return "basketpage";
+    }
+
 
 
 //    @GetMapping ("/user/basket")

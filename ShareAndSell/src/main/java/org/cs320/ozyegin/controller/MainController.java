@@ -1,15 +1,11 @@
 package org.cs320.ozyegin.controller;
 
-import java.awt.geom.AffineTransform;
-import java.security.Principal;
 import java.util.List;
-
 import org.cs320.ozyegin.data_layer.AdvertRepository;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.User;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.model.Wallet;
-import org.cs320.ozyegin.service.AdvertService;
 import org.cs320.ozyegin.service.UserService;
 import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +20,7 @@ public class MainController {
 
 	@Autowired
 	private UserService userService;
+
 	@Autowired
 	private UserRepository userRepository;
 

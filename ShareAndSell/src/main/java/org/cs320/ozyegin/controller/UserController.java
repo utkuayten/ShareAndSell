@@ -1,5 +1,6 @@
 package org.cs320.ozyegin.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.AdvertService;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -63,7 +66,7 @@ public class UserController {
     }
 
     @GetMapping("/user/profile")
-    public String profile(Principal p, Model m) {
+    public String profile(Principal p, Model m, MultipartFile file) {
         User user = userRepository.findByEmail(p.getName());
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
@@ -90,7 +93,13 @@ public class UserController {
         return "marketplace";
     }
 
+    @PostMapping("user/saveImage")
+    public String saveImage(RequestParam("file") MultipartFile file, Principal p) throws IOException {
+        User user = userRepository.findByEmail(p.getName());
+        Image new_image = imageService.uploadImage(file, user.getId());
 
+        return "redirect:/user/profile";
+    }
 //    @GetMapping ("/user/basket")
 //    public String showBasket(Principal p, Model m) {
 //        User user = userRepository.findByEmail(p.getName());

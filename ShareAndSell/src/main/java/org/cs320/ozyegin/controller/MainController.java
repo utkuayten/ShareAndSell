@@ -77,16 +77,6 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/saveImage")
-	public String saveImage(@RequestParam("file") MultipartFile file,@RequestParam("id") Long id, HttpSession session, Model m) throws IOException {
 
-		Image new_image = imageService.uploadImage(file, id);
-		if (new_image != null) {
-			session.setAttribute("msg", "Upload successfully");
-		} else {
-			session.setAttribute("msg", "Error : Something went wrong !");
-		}
-		return "user/profile";
-	}
 
 }

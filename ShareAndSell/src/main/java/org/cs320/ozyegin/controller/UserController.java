@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -44,12 +47,16 @@ public class UserController {
     }
 
     @PostMapping("/user/sellProduct")
-    public String advertPanelSell(@ModelAttribute Advertisement advert, Principal p){
+    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException, IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
-        Advertisement new_advert = advertService.saveAdvertisement(advert);
+        if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
+            return "redirect:/user/sell?error";
+        }
+        advertService.saveAdvertisement(advert, file);
         return "redirect:/user/sell";
     }
+
     @PostMapping("/user/placeOrder/{advertisementId}")
     public String placeOrder(@ModelAttribute Transaction t, @PathVariable("advertisementId") Long advertID , @RequestParam("quantity") int quantity , Principal p){
         Transaction transaction = new Transaction();

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -50,7 +51,7 @@ public class UserController {
     public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
-        if (!file.getContentType().equals("image/png")) {
+        if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
             return "redirect:/user/sell?error";
         }
         advertService.saveAdvertisement(advert, file);
@@ -83,7 +84,7 @@ public class UserController {
         Optional<byte[]> imageData = imageService.getImageDataByUserId(user.getId());
         if (imageData.isPresent()) {
             String base64Image = java.util.Base64.getEncoder().encodeToString(imageData.get());
-        String image = "data:image/*;base64," + base64Image;
+            String image = "data:image/*;base64," + base64Image;
             m.addAttribute("image", image);
         } else {
             m.addAttribute("image", "../check.png");

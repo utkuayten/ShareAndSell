@@ -40,6 +40,7 @@
   <div class="container">
     <section class="profile-section">
       <h1>My Profile</h1>
+      <img th:src="${image}" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 50%;">
       <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
       <p>Contacts: [[${user.email}]]</p>
     </section>
@@ -56,9 +57,13 @@
     </section>
 
     <section>
-      <img th:src="${image}" alt="Image">
+      <div>
+        <h2>User Profile</h2>
+        <div>
+        </div>
+        </div>
     </section>
-  </div>
+
 
   <section>
 

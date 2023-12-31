@@ -41,9 +41,14 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public byte[] getImage(User user) {
-        Image dbImage = imageRepository.findByOwner_id(user.getId());
-        return ImageUtil.decompressImage(dbImage.getImageData());
+    public Optional<byte[]> getImage(User user) {
+        return getImageDataByUserId(user.getId());
+    }
+
+    @Override
+    public Optional<byte[]> getImageDataByUserId(Long userId) {
+        Image dbImage = imageRepository.findByOwner_id(userId);
+        return Optional.of(ImageUtil.decompressImage(dbImage.getImageData()));
     }
 
 }

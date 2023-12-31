@@ -2,6 +2,8 @@ package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
+
+import java.util.Arrays;
 import java.util.Objects;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +26,57 @@ public class Image {
     private String type;
     private Long owner_id;
 
-    @Lob
+    //    @Lob
     private byte[] imageData;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", owner_id=" + owner_id +
+                ", imageData=" + Arrays.toString(imageData) +
+                '}';
+    }
 }

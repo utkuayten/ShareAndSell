@@ -48,12 +48,11 @@
       <p>wallet id: [[${wallet.id}]]</p>
       <p>balance: [[${wallet.balance}]]</p>
 
-      <form th:if="${showButton}" th:action="@{/user/profile/confirmBalance}" method="post">
+      <form th:action="@{/user/profile/confirmBalance}" method="post">
         <label for="addBalance">Add Balance:</label>
         <input type="text" id="addBalance" name="addBalance" placeholder="Enter amount" />
         <input type="submit" value="Confirm">
       </form>
-
     </section>
   </div>
 

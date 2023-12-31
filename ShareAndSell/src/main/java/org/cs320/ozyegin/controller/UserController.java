@@ -1,20 +1,21 @@
 package org.cs320.ozyegin.controller;
 
 import org.cs320.ozyegin.data_layer.UserRepository;
-import org.cs320.ozyegin.model.Advertisement;
-import org.cs320.ozyegin.model.Transaction;
-import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.model.Wallet;
+import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.AdvertService;
+import org.cs320.ozyegin.service.BasketService;
 import org.cs320.ozyegin.service.TransactionService;
 import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +35,8 @@ public class UserController {
 
     @Autowired
     private TransactionService transactionService;
+    @Autowired
+    private BasketService basketService;
 
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
@@ -44,20 +47,21 @@ public class UserController {
     }
 
     @PostMapping("/user/sellProduct")
-    public String advertPanelSell(@ModelAttribute Advertisement advert, Principal p){
+    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException, IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
-        Advertisement new_advert = advertService.saveAdvertisement(advert);
+        if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
+            return "redirect:/user/sell?error";
+        }
+        advertService.saveAdvertisement(advert, file);
         return "redirect:/user/sell";
     }
-    @PostMapping("/user/placeOrder/{advertisementId}")
-    public String placeOrder(@ModelAttribute Transaction t, @PathVariable("advertisementId") Long advertID , @RequestParam("quantity") int quantity , Principal p){
-        Transaction transaction = new Transaction();
-        Advertisement advert = advertService.findAdvertByID(advertID);
-        User seller = userService.findByID(advert.getSeller_id());
+
+    @PostMapping("/user/addBasket/{advertisementId}")
+    public String placeOrder(@PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p) throws IOException {
         User buyer = userRepository.findByEmail(p.getName());
-        transaction.setQuantity(quantity);
-        transactionService.saveTransaction(transaction,seller,buyer,advert);
+        Advertisement advert = advertService.findAdvertByID(advertID);
+        basketService.saveBasket(new Basket(), advert, quantity, buyer);
         return "redirect:/user/marketplace";
     }
 
@@ -67,9 +71,9 @@ public class UserController {
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
-        m.addAttribute("showButton",true);
         return "profile";
     }
+
 
     @PostMapping("/user/profile/confirmBalance")
     public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
@@ -90,15 +94,14 @@ public class UserController {
     }
 
     @GetMapping("/user/basket")
-    public String basketPage(Principal p,Model model){
+    public String basketPage(Principal p, Model model) {
         User user = userRepository.findByEmail(p.getName());
         model.addAttribute("user", user);
-        List<Transaction> basket = transactionService.findBasket(user);
-        model.addAttribute("transactions", basket);
-        for (Transaction transaction : basket) {
-            System.out.println(transaction);
+        List<Basket> basketList = basketService.findBasketByUser(user);
+        model.addAttribute("basket", basketList);
+        for (Basket i : basketList) {
+            System.out.println(i);
         }
-
         return "basketpage";
     }
 

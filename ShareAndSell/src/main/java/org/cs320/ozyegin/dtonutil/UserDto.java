@@ -1,4 +1,4 @@
-package org.cs320.ozyegin.dto;
+package org.cs320.ozyegin.dtonutil;
 
 public class UserDto {
 	

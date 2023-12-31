@@ -13,5 +13,6 @@ public interface TransactionService {
     Transaction saveTransaction(Transaction transaction, User seller, User Buyer, Advertisement advertisement);
 
     List<Transaction> findAllTransactions();
+
     List<Transaction> findBasket(User buyer);
 }

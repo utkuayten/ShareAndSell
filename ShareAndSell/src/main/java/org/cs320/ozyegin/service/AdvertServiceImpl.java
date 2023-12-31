@@ -25,6 +25,11 @@ public class AdvertServiceImpl implements AdvertService{
     }
 
     @Override
+    public List<Advertisement> findByPartialTitle(String title) {
+        return advertRepository.findByPartialTitle(title);
+    }
+
+    @Override
     public Advertisement findAdvertByID(Long id) {
         return advertRepository.findByID(id);
     }

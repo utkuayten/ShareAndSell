@@ -82,21 +82,11 @@ public class UserController {
         return "redirect:/user/profile";
     }
 
-
     @GetMapping("/user/home")
     public String home(Principal p, Model m) {
         User user = userRepository.findByEmail(p.getName());
         m.addAttribute("user", user);
         return "index";
-    }
-
-    @GetMapping("/user/marketplace")
-    public String marketPlace(Principal p,Model model){
-        User user = userRepository.findByEmail(p.getName());
-        model.addAttribute("user", user);
-        List<Advertisement> adverts = advertService.findAllAdvertisements();
-        model.addAttribute("advertisements", adverts);
-        return "marketplace";
     }
 
     @GetMapping("/user/basket")
@@ -121,7 +111,7 @@ public class UserController {
 //        List<Transaction> userBasket = transactionService.findBasket(user);
 //        m.addAttribute("basketAds", userBasket);
 //        return "basketpage";
-//    }
+//   }
 
 
 }

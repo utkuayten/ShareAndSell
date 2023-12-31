@@ -17,6 +17,9 @@ public interface AdvertRepository extends JpaRepository<Advertisement, Long> {
     @Query("SELECT advert FROM Advertisement advert WHERE advert.id = :id")
     Advertisement findByID(@Param("id") Long id);
 
+    @Query("SELECT advert FROM Advertisement advert WHERE LOWER(advert.title) LIKE LOWER(CONCAT('%', :query, '%'))")
+    List<Advertisement> findByPartialTitle(@Param("query") String query);
+
     @Query("SELECT advert FROM Advertisement advert ")
     List<Advertisement> findAllAdverts();
 

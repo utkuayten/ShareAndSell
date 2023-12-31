@@ -116,6 +116,7 @@ public class Advertisement {
         return "data:image/*;base64," + base64Image;
     }
 
+
     @Override
     public String toString() {
         return "Advertisement{" +

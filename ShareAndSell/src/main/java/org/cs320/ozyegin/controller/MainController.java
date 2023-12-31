@@ -6,15 +6,9 @@ import java.security.Principal;
 import java.util.List;
 
 import org.cs320.ozyegin.data_layer.AdvertRepository;
-import org.cs320.ozyegin.model.Advertisement;
-import org.cs320.ozyegin.model.Image;
-import org.cs320.ozyegin.model.User;
+import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.data_layer.UserRepository;
-import org.cs320.ozyegin.model.Wallet;
-import org.cs320.ozyegin.service.AdvertService;
-import org.cs320.ozyegin.service.ImageService;
-import org.cs320.ozyegin.service.UserService;
-import org.cs320.ozyegin.service.WalletService;
+import org.cs320.ozyegin.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +36,9 @@ public class MainController {
 	@Autowired
 	private ImageService imageService;
 
+	@Autowired
+	private TransactionService transactionService;
+
 	@GetMapping("/")
 	public String index() {
 		return "index";
@@ -56,15 +53,12 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
-
-
 	@GetMapping("/marketplace")
 	public String marketPlace(Model model){
 		List<Advertisement> adverts = advertRepository.findAllAdverts();
 		model.addAttribute("advertisements", adverts);
 		return "marketplace";
 	}
-
 	@PostMapping("/saveUser")
 	public String saveUser(@ModelAttribute User user, HttpSession session, Model m) {
 		User new_user = userService.saveUser(user);
@@ -77,6 +71,18 @@ public class MainController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/user/basket")
+	public String basketPage(Principal p, Model model) {
+		User user = userRepository.findByEmail(p.getName());
+		model.addAttribute("user", user);
+		List<Transaction> basket = transactionService.findBasket(user);
+
+		for (Transaction transaction : basket) {
+			System.out.println(transaction);
+		}
+
+		return "basketpage";
+	}
 
 
 }

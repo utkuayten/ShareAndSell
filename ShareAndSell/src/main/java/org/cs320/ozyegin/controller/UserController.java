@@ -74,9 +74,9 @@ public class UserController {
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
-        m.addAttribute("showButton",true);
         return "profile";
     }
+
 
     @PostMapping("/user/profile/confirmBalance")
     public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
@@ -106,18 +106,18 @@ public class UserController {
         return "marketplace";
     }
 
-    @GetMapping("/user/basket")
-    public String basketPage(Principal p,Model model){
-        User user = userRepository.findByEmail(p.getName());
-        model.addAttribute("user", user);
-        List<Transaction> basket = transactionService.findBasket(user);
-        model.addAttribute("transactions", basket);
-        for (Transaction transaction : basket) {
-            System.out.println(transaction);
-        }
-
-        return "basketpage";
-    }
+//    @GetMapping("/user/basket")
+//    public String basketPage(Principal p,Model model){
+//        User user = userRepository.findByEmail(p.getName());
+//        model.addAttribute("user", user);
+//        List<Transaction> basket = transactionService.findBasket(user);
+//        model.addAttribute("transactions", basket);
+//        for (Transaction transaction : basket) {
+//            System.out.println(transaction);
+//        }
+//
+//        return "basketpage";
+//    }
 
 
 

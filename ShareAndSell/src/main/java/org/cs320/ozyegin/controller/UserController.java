@@ -67,8 +67,21 @@ public class UserController {
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
+        m.addAttribute("showButton",true);
         return "profile";
     }
+
+    @PostMapping("/user/profile/confirmBalance")
+    public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
+        User user = userRepository.findByEmail(p.getName());
+        Wallet wallet = walletService.findWalletByOwner_id(user);
+        System.out.println("New Balance: " + addBalance);
+        if (wallet != null) {
+            walletService.updateBalance(wallet,addBalance);
+        }
+        return "redirect:/user/profile";
+    }
+
 
     @GetMapping("/user/home")
     public String home(Principal p, Model m) {

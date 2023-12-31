@@ -48,6 +48,7 @@ public class Wallet {
         this.balance = balance;
     }
 
+    public void addBalance(int balance)  { this.balance += balance; }
     @Override
     public String toString() {
         return "Wallet{" +

@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.welcome-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #3498db 50%, #2077b3 50%); /* Double-colored background */
+}
+
+.welcome-container {
+    text-align: center;
+    color: #fff; /* Text color for better contrast on the background */
+}
+
+.welcome-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.welcome-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    text-decoration: none;
+    background-color: #fff; /* Choose your button color */
+    color: #3498db; /* Choose your button text color */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ffffff; /* Choose your button color on hover */
+}

@@ -8,3 +8,6 @@ DELETE
 FROM transactions;
 DELETE
 FROM images;
+
+DELETE
+FROM baskets;

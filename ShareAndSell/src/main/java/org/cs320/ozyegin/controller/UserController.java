@@ -66,12 +66,12 @@ public class UserController {
     }
 
     @GetMapping("/user/profile")
-    public String profile(Principal p, Model m, MultipartFile file) {
+    public String profile(Principal p, Model m) {
         User user = userRepository.findByEmail(p.getName());
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
-      /*  String base64Image = java.util.Base64.getEncoder().encodeToString(imageService.findImageByOwner_id(user).getImageData());
+        /*String base64Image = java.util.Base64.getEncoder().encodeToString(imageService.findImageByOwner_id(user).getImageData());
         String image = "data:image/*;base64," + base64Image;
         m.addAttribute("image", image);*/
         return "profile";
@@ -94,7 +94,7 @@ public class UserController {
     }
 
     @PostMapping("user/saveImage")
-    public String saveImage(RequestParam("file") MultipartFile file, Principal p) throws IOException {
+    public String saveImage(@RequestParam("file") MultipartFile file, Principal p) throws IOException {
         User user = userRepository.findByEmail(p.getName());
         Image new_image = imageService.uploadImage(file, user.getId());
 

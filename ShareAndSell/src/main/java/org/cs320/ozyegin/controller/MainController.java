@@ -71,18 +71,6 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/user/basket")
-	public String basketPage(Principal p, Model model) {
-		User user = userRepository.findByEmail(p.getName());
-		model.addAttribute("user", user);
-		List<Transaction> basket = transactionService.findBasket(user);
-
-		for (Transaction transaction : basket) {
-			System.out.println(transaction);
-		}
-
-		return "basketpage";
-	}
 
 
 }

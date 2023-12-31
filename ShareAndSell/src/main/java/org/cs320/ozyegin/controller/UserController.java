@@ -1,11 +1,9 @@
 package org.cs320.ozyegin.controller;
 
 import org.cs320.ozyegin.data_layer.UserRepository;
-import org.cs320.ozyegin.model.Advertisement;
-import org.cs320.ozyegin.model.Transaction;
-import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.model.Wallet;
+import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.AdvertService;
+import org.cs320.ozyegin.service.BasketService;
 import org.cs320.ozyegin.service.TransactionService;
 import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +35,8 @@ public class UserController {
 
     @Autowired
     private TransactionService transactionService;
+    @Autowired
+    private BasketService basketService;
 
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
@@ -57,14 +57,11 @@ public class UserController {
         return "redirect:/user/sell";
     }
 
-    @PostMapping("/user/placeOrder/{advertisementId}")
-    public String placeOrder(@ModelAttribute Transaction t, @PathVariable("advertisementId") Long advertID , @RequestParam("quantity") int quantity , Principal p){
-        Transaction transaction = new Transaction();
-        Advertisement advert = advertService.findAdvertByID(advertID);
-        User seller = userService.findByID(advert.getSeller_id());
+    @PostMapping("/user/addBasket/{advertisementId}")
+    public String placeOrder(@PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p) throws IOException {
         User buyer = userRepository.findByEmail(p.getName());
-        transaction.setQuantity(quantity);
-        transactionService.saveTransaction(transaction,seller,buyer,advert);
+        Advertisement advert = advertService.findAdvertByID(advertID);
+        basketService.saveBasket(new Basket(), advert, quantity, buyer);
         return "redirect:/user/marketplace";
     }
 
@@ -106,18 +103,17 @@ public class UserController {
         return "marketplace";
     }
 
-//    @GetMapping("/user/basket")
-//    public String basketPage(Principal p,Model model){
-//        User user = userRepository.findByEmail(p.getName());
-//        model.addAttribute("user", user);
-//        List<Transaction> basket = transactionService.findBasket(user);
-//        model.addAttribute("transactions", basket);
-//        for (Transaction transaction : basket) {
-//            System.out.println(transaction);
-//        }
-//
-//        return "basketpage";
-//    }
+    @GetMapping("/user/basket")
+    public String basketPage(Principal p, Model model) {
+        User user = userRepository.findByEmail(p.getName());
+        model.addAttribute("user", user);
+        List<Basket> basketList = basketService.findBasketByUser(user);
+        model.addAttribute("basket", basketList);
+        for (Basket i : basketList) {
+            System.out.println(i);
+        }
+        return "basketpage";
+    }
 
 
 

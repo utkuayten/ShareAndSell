@@ -57,15 +57,25 @@
         background-color: transparent;
         text-align: end;
         font-weight: bold;
-        color: #ffffff;
-
+        color: #c8e6c9;
     }
 
     .date-input {
         border: none;
+        width: 50px;
         background-color: transparent;
-        font-style: italic;
-        color: #ffffff;
+        text-align: end;
+        font-weight: bold;
+        color: #c8e6c9;
+    }
+
+    .stock-input {
+        border: none;
+        width: 50px;
+        background-color: transparent;
+        text-align: end;
+        font-weight: bold;
+        color: #c8e6c9;
     }
 </style>
 <!DOCTYPE html>
@@ -84,31 +94,29 @@
             <img th:src="${advertisement.getImage()}" alt="Product Photo"
                  style="width: 100px; height: 70px; border-radius: 75%; ">
             <h3 th:text="${advertisement.title}"></h3>
-            <p th:text="${advertisement.quantity}"></p>
             <p>
-                Price: <label>
-                <input type="text" th:value="${advertisement.price}"  class="price-input" readonly>
-            </label>
+                Stock: <span th:text="${advertisement.quantity}" class="stock-input"></span>
+            </p>
+            <p>
+                Price: <span th:text="${advertisement.price}" class="price-input"></span>
                 <span>$</span>
             </p>
             <p>
-                Date: <label>
-                <input type="text" th:value="${advertisement.getDateString()}" class="date-input" readonly>
-            </label>
+                Date: <span th:text="${advertisement.getDateString()}" class="date-input"></span>
             </p>
             <div style="display: flex; align-items: center;">
                 <!-- Link for View Details -->
                 <a th:href="@{'/details/' + ${advertisement.id}}" class="btn btn-primary" style="margin-right: 10px;">View Details</a>
 
                 <!-- Form for specifying the quantity -->
-                <form id="orderForm" th:action="@{'/user/placeOrder/' + ${advertisement.id}}" method="post">
+                <form id="orderForm" th:action="@{'/user/addBasket/' + ${advertisement.id}}" method="post">
                     <label for="quantity"></label>
                     <select id="quantity" name="quantity">
                         <option th:each="i : ${#numbers.sequence(1, advertisement.quantity)}"
                                 th:value="${i}" th:text="${i}"></option>
                     </select>
                     <!-- Call the JavaScript function on button click -->
-                    <input type="submit" value="Order Now" class="btn btn-secondary">
+                    <input type="submit" value="Add to Basket" class="btn btn-secondary">
                 </form>
             </div>
 

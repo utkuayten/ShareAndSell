@@ -1,94 +1,66 @@
+<style>
+    .basket {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adjust the gap between items */
+    }
+
+    .basket-item {
+        border: 1px solid #000;
+        padding: 10px;
+        width: 300px; /* Adjust the width as needed */
+        height: 300px; /* Adjust the height as needed */
+        background-color: #4CAF50;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .item-details {
+        flex: 1;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+</style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Basket Page</title>
-    <style>
-        body {
-            background-color: #eaf4ea; /* Light green background */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh; /* Full viewport height */
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 
-        .container {
-            background-color: #ffffff; /* White background for container */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-        }
-
-        .card {
-            background-color: #f9f9f9; /* Light gray background for cards */
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
-        }
-
-        .card-body {
-            display: flex;
-            align-items: center;
-        }
-
-        .card-title {
-            flex-grow: 1; /* Allow the title to expand */
-            margin-bottom: 0; /* Remove default margin */
-        }
-
-        .card-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .tick-button,
-        .cancel-button {
-            margin-left: 10px; /* Adjust space between buttons */
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .tick-button img,
-        .cancel-button img {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
 </head>
 <body>
 <section>
-    <div class="container">
-        <h1>Basket Page</h1>
-        <div class="row">
-            <!-- Example advertisement cards -->
-            <!--/*@thymesVar id="transactions" type="org.cs320.ozyegin.model.Transaction"*/-->
-            <div class="col-md-4 mb-4" th:each="transaction : ${transactions}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${transaction.price}">Ad Title</h5>
-                        <div class="card-buttons">
-                            <!-- Add tick and cancel buttons -->
-                            <button class="tick-button" title="Tick">
-                                <img th:src="@{check.png}" alt="Tick Image">
-                            </button>
-
-                            <button class="cancel-button" title="Cancel">
-                                <img th:src="@{cancel.png}" alt="Cancel Image">
-                            </button>
-
-
-                        </div>
-                    </div>
-                </div>
+    <div class="basket">
+        <div th:each="item : ${basket}" class="basket-item">
+            <div class="item-details">
+                <h3 th:text="${item.quantity}"></h3>
+                <h3 th:text="${item.product_id}"></h3>
             </div>
 
-            <!-- Add more advertisement cards dynamically based on the basket items -->
+            <div class="action-buttons">
+                <button onclick="handleTick()">Tick</button>
+                <button onclick="handleCancel()">Cancel</button>
+            </div>
         </div>
     </div>
-
 </section>
+
+<script>
+    function handleTick() {
+        // Handle tick action
+        console.log("Tick clicked");
+    }
+
+    function handleCancel() {
+        // Handle cancel action
+        console.log("Cancel clicked");
+    }
+</script>
 </body>
 </html>

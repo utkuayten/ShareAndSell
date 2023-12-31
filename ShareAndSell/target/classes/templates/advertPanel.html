@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+
+    body {
+        background-color: #eaf4ea; /* Light green */
+    }
+
+    h3,
+    p,
+    li {
+        color: #006400; /* Dark green */
+    }
+
+    .card {
+        background-color: #c8e6c9; /* Pale green */
+        border: 1px solid #228B22; /* Forest green */
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        border: 1px solid #006400; /* Dark green */
+    }
+
+    .btn-primary {
+        background-color: #006400; /* Dark green */
+        border-color: #006400; /* Dark green */
+    }
+
+    .btn-primary:hover {
+        background-color: #228B22; /* Forest green */
+        border-color: #228B22; /* Forest green */
+    }
+</style>
+<body>®
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <section class="adverts-table">
+                <div>
+                    <div class="card">
+                        <div class="card-header text-center fs-4">Product Selling Panel</div>
+                        <div class="card-body">
+                            <form action="/user/sellProduct" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" name="title" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description">Description</label>
+                                    <textarea id="description" name="description" class="form-control"
+                                              required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" id="quantity" name="quantity" class="form-control"
+                                           required min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price">Price</label>
+                                    <input type="number" id="price" name="price" class="form-control"
+                                           required min="0" step="0.5">
+                                    <small class="form-text text-muted">Enter the price for the product.</small>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="file" name="file" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary col-md-12">Sell Product</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4">
+            <section class="adverts-table">
+                <div>
+                    <h3>Hi [[${user.name}]]!!</h3>
+                    <p>This is your product list:</p>
+                    <ul>
+                        <!-- Replace this section with dynamic data from the backend -->
+                        <li>adv1</li>
+                        <li>adv2</li>
+                        <!-- End of dynamic data section -->
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

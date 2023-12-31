@@ -12,7 +12,6 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String email;
 	private String password;
 	private String name;
@@ -30,7 +29,7 @@ public class User {
 		this.role = role;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 

@@ -38,10 +38,10 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
 	{
 		http.csrf().disable()
-				.authorizeHttpRequests().requestMatchers("/","/register","/signIn","/saveUser").permitAll()
-				.requestMatchers("/user/**").authenticated().and()
+				.authorizeHttpRequests().requestMatchers("/","/register","/signIn","/saveUser","/marketplace","static/css/**","/userLogin").permitAll()
+				.requestMatchers("/user/**","sellProduct", "saveImage").authenticated().and()
 				.formLogin().loginPage("/signIn").loginProcessingUrl("/userLogin")
-				.defaultSuccessUrl("/user/profile").permitAll();
+				.defaultSuccessUrl("/user/home").permitAll();
 		return http.build();
 	}
 

@@ -9,27 +9,34 @@
           crossorigin="anonymous">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
+            background-color: #eaf4ea; /* Light green */
         }
 
-        nav {
-            background-color: #28a745; /* Dark green background for navbar */
+        h3,
+        p,
+        li {
+            color: #006400; /* Dark green */
         }
 
-        .navbar-brand,
-        .nav-link {
-            color: #fff; /* White text for navbar items */
+        .card {
+            background-color: #c8e6c9; /* Pale green */
+            border: 1px solid #228B22; /* Forest green */
         }
 
-        .navbar-nav .nav-item:hover .nav-link {
-            color: #13593c; /* Darker green on hover */
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            border: 1px solid #006400; /* Dark green */
         }
 
-        .navbar-nav .nav-item:last-child {
-            margin-left: auto; /* Pushes the Logout link to the right */
+        .btn-primary {
+            background-color: #006400; /* Dark green */
+            border-color: #006400; /* Dark green */
+        }
+
+        .btn-primary:hover {
+            background-color: #228B22; /* Forest green */
+            border-color: #228B22; /* Forest green */
         }
     </style>
 </head>
@@ -46,16 +53,31 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                <!--/*@thymesVar id="user" type="org.cs320.ozyegin.model.User"*/-->
                 <th:block th:if="${user==NULL}">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/marketplace">Market Place</a></li>
                     <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="signIn">Login</a></li>
                 </th:block>
+                <!--/*@thymesVar id="user" type="org.cs320.ozyegin.model.User"*/-->
                 <th:block th:if="${user!=NULL}">
-                    <li class="nav-item"><a class="nav-link" href="/user/sell">Sell !</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/user/wallet">My Wallet</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/user/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/user/marketplace">Market Place</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/sell">Sell </a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ordersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Orders
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ordersDropdown">
+                            <li><a class="dropdown-item" href="/user/basket">Basket</a></li>
+                            <li><a class="dropdown-item" href="/user/myOrders">My Orders</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/user/profile">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                 </th:block>
+
             </ul>
         </div>
     </div>
@@ -65,5 +87,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

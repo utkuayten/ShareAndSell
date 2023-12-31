@@ -1,7 +1,7 @@
 package org.cs320.ozyegin.service;
 
 import org.cs320.ozyegin.model.User;
-import org.cs320.ozyegin.repositories.UserRepository;
+import org.cs320.ozyegin.data_layer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(password);
 		user.setRole("ROLE_USER");
         return userRepository.save(user);
+	}
+
+	@Override
+	public User findUserByID(Long id) {
+		return userRepository.findByID(id);
 	}
 
 

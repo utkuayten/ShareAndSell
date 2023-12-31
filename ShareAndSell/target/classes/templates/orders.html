@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <style>
+        /* Styling for the boxes */
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px;
+            float: left;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Basket</h2>
+</div>
+<div class="box">
+    <h2>My Orders</h2>
+</div>
+
+<div class="clearfix"></div>
+
+</body>
+</html>

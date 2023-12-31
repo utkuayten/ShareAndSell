@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    overflow:auto;
+    width: 600px;
+}
+
+.profile-section,
+.wallet-section {
+    flex: 1;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.profile-section h1,
+.wallet-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-section h4,
+.wallet-section p {
+    font-size: 18px;
+}
+
+.blurred{
+    filter: blur(1px);
+}

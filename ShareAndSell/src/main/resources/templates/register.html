@@ -62,11 +62,10 @@
     }
 </style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
-
 </head>
 
 <body>
@@ -84,21 +83,22 @@
                     <div class="card-body">
                         <form action="saveUser" method="post">
                             <div class="mb-3">
-                                <label>Enter Full Name</label>
+                                <label>Name : </label>
                                 <label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter your name">
                                 </label>
                             </div>
                             <div class="mb-3">
-                                <label>Enter Email</label>
+                                <label>Email : </label>
                                 <label>
-                                    <input type="text" name="email" class="form-control">
+                                    <input type="text" name="email" class="form-control" placeholder="Enter your email">
                                 </label>
                             </div>
                             <div class="mb-3">
-                                <label>Enter Password</label>
+                                <label>Password : </label>
                                 <label>
-                                    <input type="password" name="password" class="form-control">
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Enter your password">
                                 </label>
                             </div>
                             <button class="btn btn-primary col-md-12">Register</button>

@@ -6,8 +6,37 @@ create table if not exists users(
     role text
 );
 
-CREATE TABLE advertisements (
+create TABLE if not exists advertisements (
+                                id SERIAL PRIMARY KEY,
+                                title text,
+                                description text,
+                                quantity int,
+                                price int,
+                                seller_id int
+);
+
+create TABLE if not exists wallets (
+                         id SERIAL PRIMARY KEY,
+                         owner_id int,
+                         balance int
+);
+
+
+create TABLE if not exists transactions (
+                         id SERIAL PRIMARY KEY,
+                         seller_id int,
+                         buyer_id int,
+                         product_id int,
+                         price int,
+                         quantity int,
+                         status text
+);
+
+create TABLE if not exists images (
     id SERIAL PRIMARY KEY,
-    seller_id BIGINT NOT NULL,
-    image_data BYTEA
+    name VARCHAR(255) UNIQUE,
+    type varchar(30),
+    owner_id int,
+    imageData bytea,
+    purpose   varchar(50)
 );

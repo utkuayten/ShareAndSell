@@ -1,0 +1,30 @@
+body {
+    background-color: #eaf4ea; /* Light green */
+}
+
+h3,
+p,
+li {
+    color: #006400; /* Dark green */
+}
+
+.card {
+    background-color: #c8e6c9; /* Pale green */
+    border: 1px solid #228B22; /* Forest green */
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    border: 1px solid #006400; /* Dark green */
+}
+
+.btn-primary {
+    background-color: #006400; /* Dark green */
+    border-color: #006400; /* Dark green */
+}
+
+.btn-primary:hover {
+    background-color: #228B22; /* Forest green */
+    border-color: #228B22; /* Forest green */
+}

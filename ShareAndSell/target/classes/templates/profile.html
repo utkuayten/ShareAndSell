@@ -1,63 +1,90 @@
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    overflow:auto;
+    width: 600px;
   }
 
-  section {
-    text-align: center;
-    margin-top: 50px;
+  .profile-section,
+  .wallet-section {
+    flex: 1;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
   }
 
-  h1 {
-    font-size: 2em;
-  }
-
-  h4 {
+  .profile-section h1,
+  .wallet-section h2 {
+    font-size: 24px;
     margin-bottom: 10px;
-    font-weight: normal;
   }
 
-  a {
-    text-decoration: none;
-    color: #007bff;
+  .profile-section h4,
+  .wallet-section p {
+    font-size: 18px;
   }
 
-  a:hover {
-    text-decoration: underline;
+  .blurred{
+    filter: blur(1px);
   }
 
-  /* Blurred effect for the role */
-  .role-blur {
-    color: transparent;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adjust blur effect */
-    position: relative;
-  }
-
-  .role-blur:hover::after {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.0); /* Adjust blur effect */
-  }
 </style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
+  <html lang="en" xmlns:th="http://www.thymeleaf.org"
+        th:replace="~{base::layout(~{::section})}">
+  <body>
+  <div class="container">
+    <section class="profile-section">
+      <h1>My Profile</h1>
+      <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
+      <p>Contacts: [[${user.email}]]</p>
+    </section>
 
-<head>
-  <meta charset="UTF-8">
-  <title>User Profile</title>
-</head>
 
-<body>
-<section>
-  <h1>Profile Page</h1>
+    <section class="wallet-section">
+      <h2>My Wallet</h2>
+      <p>wallet id: [[${wallet.id}]]</p>
+      <p>balance: [[${wallet.balance}]]</p>
+      <form th:if="${showButton}" th:action="@{/confirm}" method="post">
+        <input type="hidden" th:name="newBalance" th:value="${wallet.balance}" />
+        <img th:src="${image}" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 50%;">
+        <input type="submit" value="Confirm">
+      </form>
+    </section>
 
-  <h4>Name: [[${user.name}]] </h4>
-  <h4>Email: [[${user.email}]]</h4>
-  <h4><span class="role-blur">[[${user.role}]]</span></h4>
-  <a href="/logout">Logout</a>
-</section>
-</body>
+    <section>
+      <div>
+        <h2>User Profile</h2>
+        <div>
+        </div>
+        </div>
+    </section>
 
-</html>
+
+  <section>
+
+    <div>
+      <form action = "/user/saveImage" method="post" enctype="multipart/form-data">
+        <label>Photo</label>
+        <label>
+          <div>
+            <label>
+            <input type="file" name="file" class="form-control">
+
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary col-md-12">Upload</button>
+        </label>
+      </form>
+    </div>
+  </section>
+
+  </div>
+  </body>
+
+  </html>
+

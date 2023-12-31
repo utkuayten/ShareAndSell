@@ -67,9 +67,6 @@
         font-style: italic;
         color: #ffffff;
     }
-
-
-
 </style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
@@ -84,6 +81,8 @@
     <div class="marketplace-items">
             <!--/*@thymesVar id="advertisements" type="org.cs320.ozyegin.model.Advertisement"*/-->
         <div th:each="advertisement : ${advertisements}">
+            <img th:src="${advertisement.getImage()}" alt="Product Photo"
+                 style="width: 100px; height: 70px; border-radius: 75%; ">
             <h3 th:text="${advertisement.title}"></h3>
             <p th:text="${advertisement.quantity}"></p>
             <p>

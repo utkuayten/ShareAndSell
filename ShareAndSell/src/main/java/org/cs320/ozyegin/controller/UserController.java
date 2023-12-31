@@ -1,6 +1,5 @@
 package org.cs320.ozyegin.controller;
 
-import jakarta.servlet.http.HttpSession;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.AdvertService;
@@ -8,10 +7,6 @@ import org.cs320.ozyegin.service.ImageService;
 import org.cs320.ozyegin.service.TransactionService;
 import org.cs320.ozyegin.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,19 +47,29 @@ public class UserController {
     }
 
     @PostMapping("/user/sellProduct")
-    public String advertPanelSell(@ModelAttribute Advertisement advert, Principal p){
+    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
-        Advertisement new_advert = advertService.saveAdvertisement(advert);
+        if (!file.getContentType().equals("image/png")) {
+            return "redirect:/user/sell?error";
+        }
+        advertService.saveAdvertisement(advert, file);
         return "redirect:/user/sell";
     }
+
+    @PostMapping("/user/saveImage")
+    public String profileImage(@RequestParam("file") MultipartFile file, Principal p) throws IOException {
+        User user = userRepository.findByEmail(p.getName());
+        imageService.uploadImageForProfile(file, user.getId());
+        return "redirect:/user/profile";
+    }
+
     @PostMapping("/user/placeOrder/{advertisementId}")
-    public String placeOrder(@ModelAttribute Transaction t, @PathVariable("advertisementId") Long advertID , @RequestParam("quantity") int quantity , Principal p){
-        Transaction transaction = new Transaction();
+    public String placeOrder(Transaction t, @PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p) {
         Advertisement advert = advertService.findAdvertByID(advertID);
         User seller = userService.findByID(advert.getSeller_id());
         User buyer = userRepository.findByEmail(p.getName());
-        transaction.setQuantity(quantity);
+        t.setQuantity(quantity);
         transactionService.saveTransaction(t,seller,buyer,advert);
         return "redirect:/user/marketplace";
     }
@@ -81,6 +85,8 @@ public class UserController {
             String base64Image = java.util.Base64.getEncoder().encodeToString(imageData.get());
         String image = "data:image/*;base64," + base64Image;
             m.addAttribute("image", image);
+        } else {
+            m.addAttribute("image", "../check.png");
         }
         return "profile";
     }
@@ -101,13 +107,6 @@ public class UserController {
         return "marketplace";
     }
 
-    @PostMapping("user/saveImage")
-    public String saveImage(@RequestParam("file") MultipartFile file, Principal p) throws IOException {
-        User user = userRepository.findByEmail(p.getName());
-        Image new_image = imageService.uploadImage(file, user.getId());
-
-        return "redirect:/user/profile";
-    }
 
 
 //    @GetMapping ("/user/basket")

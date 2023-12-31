@@ -37,5 +37,6 @@ create TABLE if not exists images (
     name VARCHAR(255) UNIQUE,
     type varchar(30),
     owner_id int,
-    imageData bytea
+    imageData bytea,
+    purpose   varchar(50)
 );

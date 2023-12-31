@@ -1,6 +1,7 @@
 package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
+import org.cs320.ozyegin.dtonutil.ImageUtil;
 
 import java.util.Date;
 
@@ -23,19 +24,21 @@ public class Advertisement {
     private Long seller_id;
 
     private Date date;
+    private byte[] imageData;
 
 
     public Advertisement() {
         super();
     }
 
-    public Advertisement(String title, String description, int quantity, int price,Long seller_id, Date date) {
+    public Advertisement(String title, String description, int quantity, int price, Long seller_id, Date date, byte[] imageData) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
         this.seller_id = seller_id;
         this.date = date;
+        this.imageData = imageData;
     }
 
     // Getters and setters
@@ -98,6 +101,19 @@ public class Advertisement {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    public String getImage() {
+        String base64Image = java.util.Base64.getEncoder().encodeToString(ImageUtil.decompressImage(imageData));
+        return "data:image/*;base64," + base64Image;
     }
 
     @Override

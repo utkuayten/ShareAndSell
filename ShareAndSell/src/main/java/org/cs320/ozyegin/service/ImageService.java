@@ -10,10 +10,12 @@ import java.util.Optional;
 public interface ImageService {
 
 
-    public Image uploadImage(MultipartFile file, Long id)throws IOException;
+    public Image uploadImageForProfile(MultipartFile file, Long id) throws IOException;
     public Image findImageByOwner_id(User user);
 
     public Optional<byte[]> getImage(User user);
 
     public Optional<byte[]> getImageDataByUserId(Long userId);
+
+    public Image uploadImageForProduct(MultipartFile file, Long id) throws IOException;
 }

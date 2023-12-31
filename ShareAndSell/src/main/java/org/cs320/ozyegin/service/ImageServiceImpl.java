@@ -16,14 +16,14 @@ public class ImageServiceImpl implements ImageService{
     @Autowired
     private ImageRepository imageRepository;
     @Override
-    public Image uploadImage(MultipartFile file, Long id) throws IOException {
+    public Image uploadImageForProfile(MultipartFile file, Long id) throws IOException {
         Image image = Image.builder()
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
                 .owner_id(id)
                 .imageData(ImageUtil.compressImage(file.getBytes())).build();
+        image.setPurpose("FOR_PROFILE");
         imageRepository.save(image);
-
         return image;
 
     }
@@ -49,6 +49,18 @@ public class ImageServiceImpl implements ImageService{
     public Optional<byte[]> getImageDataByUserId(Long userId) {
         Image dbImage = imageRepository.findByOwner_id(userId);
         return Optional.of(ImageUtil.decompressImage(dbImage.getImageData()));
+    }
+
+    @Override
+    public Image uploadImageForProduct(MultipartFile file, Long id) throws IOException {
+        Image image = Image.builder()
+                .name(file.getOriginalFilename())
+                .type(file.getContentType())
+                .owner_id(id)
+                .imageData(ImageUtil.compressImage(file.getBytes())).build();
+        image.setPurpose("FOR_PRODUCT");
+        imageRepository.save(image);
+        return image;
     }
 
 }

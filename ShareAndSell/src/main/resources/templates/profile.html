@@ -51,14 +51,19 @@
       <p>balance: [[${wallet.balance}]]</p>
       <form th:if="${showButton}" th:action="@{/confirm}" method="post">
         <input type="hidden" th:name="newBalance" th:value="${wallet.balance}" />
+        <img th:src="${image}" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 50%;">
         <input type="submit" value="Confirm">
       </form>
     </section>
 
     <section>
-      <img th:src="${image}" alt="Image">
+      <div>
+        <h2>User Profile</h2>
+        <div>
+        </div>
+      </div>
     </section>
-  </div>
+
 
   <section>
 
@@ -78,6 +83,7 @@
     </div>
   </section>
 
+  </div>
   </body>
 
   </html>

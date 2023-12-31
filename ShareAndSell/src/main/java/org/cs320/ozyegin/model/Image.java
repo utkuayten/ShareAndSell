@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.cs320.ozyegin.dtonutil.ImageUtil;
 
 @Entity
 @Table(name = "images")
@@ -28,6 +29,7 @@ public class Image {
 
     //    @Lob
     private byte[] imageData;
+    private String purpose;
 
     public Long getId() {
         return id;
@@ -65,8 +67,20 @@ public class Image {
         return imageData;
     }
 
+    public byte[] get_image() {
+        return ImageUtil.decompressImage(imageData);
+    }
+
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
     }
 
     @Override

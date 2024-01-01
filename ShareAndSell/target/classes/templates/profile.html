@@ -43,18 +43,35 @@
       <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
       <p>Contacts: [[${user.email}]]</p>
     </section>
+    <section class="profile-section">
+      <h1>Profile Photo</h1>
+      <img th:src="${image}" alt="image" style="width: 100px; height: 70px; border-radius: 75%; ">
+    </section>
     <section class="wallet-section">
       <h2>My Wallet</h2>
       <p>wallet id: [[${wallet.id}]]</p>
       <p>balance: [[${wallet.balance}]]</p>
 
-      <form th:action="@{/user/profile/confirmBalance}" method="post">
+      <form th:action="@{/user/profile/confirmBalance}" method="post" >
         <label for="addBalance">Add Balance:</label>
         <input type="text" id="addBalance" name="addBalance" placeholder="Enter amount" />
         <input type="submit" value="Confirm">
       </form>
 
     </section>
+  </div>
+  <div class="container">
+    <section class="profile-section">
+      <form th:action="@{/user/saveImage}" method="post" enctype="multipart/form-data">
+        <label>
+          <input type="file" id="file" name="file" class="form-control">
+        </label>
+        <label>
+          <button type="submit" class="btn btn-primary col-md-12">Upload Image</button>
+        </label>
+      </form>
+    </section>
+
   </div>
 
   </body>

@@ -112,9 +112,6 @@ public class UserController {
         model.addAttribute("user", user);
         List<Basket> basketList = basketService.findBasketByUser(user);
         model.addAttribute("basket", basketList);
-        for (Basket i : basketList) {
-            System.out.println(i);
-        }
         return "basketpage";
     }
 

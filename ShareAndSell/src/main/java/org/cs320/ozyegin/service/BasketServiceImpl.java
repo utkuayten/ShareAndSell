@@ -16,6 +16,9 @@ public class BasketServiceImpl implements BasketService {
     @Autowired
     private BasketRepository basketRepository;
 
+    @Autowired
+    private AdvertService advertService;
+
     @Override
     public Basket saveBasket(Basket basket, Advertisement advertisement, int quantity, User user) throws IOException {
         basket.setBuyer_id(user.getId());
@@ -27,5 +30,15 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public List<Basket> findBasketByUser(User user) {
         return basketRepository.findBasketByBuyer(user.getId());
+    }
+
+    @Override
+    public double totalPriceByBasket(List<Basket> basketList) {
+        double total_price = 0;
+        for (Basket item : basketList) {
+            Advertisement advert = advertService.findAdvertByID(item.getProduct_id());
+            total_price += advert.getPrice() * item.getQuantity();
+        }
+        return total_price;
     }
 }

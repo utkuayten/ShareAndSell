@@ -13,4 +13,5 @@ public interface BasketService {
 
     List<Basket> findBasketByUser(User user);
 
+    double totalPriceByBasket(List<Basket> basketList);
 }

@@ -1,11 +1,10 @@
 package org.cs320.ozyegin.controller;
 
+import org.cs320.ozyegin.data_layer.ImageRepository;
 import org.cs320.ozyegin.data_layer.UserRepository;
+import org.cs320.ozyegin.dtonutil.ImageUtil;
 import org.cs320.ozyegin.model.*;
-import org.cs320.ozyegin.service.AdvertService;
-import org.cs320.ozyegin.service.BasketService;
-import org.cs320.ozyegin.service.TransactionService;
-import org.cs320.ozyegin.service.WalletService;
+import org.cs320.ozyegin.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +37,12 @@ public class UserController {
     @Autowired
     private BasketService basketService;
 
+    @Autowired
+    private ImageService imageService;
+
+    @Autowired
+    private ImageRepository imageRepository;
+
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
         User user = userRepository.findByEmail(p.getName());
@@ -47,9 +52,10 @@ public class UserController {
     }
 
     @PostMapping("/user/sellProduct")
-    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException, IOException {
+    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p,Model m) throws IOException, IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
+        advert.setSeller_name(seller_user.getName());
         if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
             return "redirect:/user/sell?error";
         }
@@ -71,6 +77,13 @@ public class UserController {
         m.addAttribute("user", user);
         Wallet wallet = walletService.findWalletByOwner_id(user);
         m.addAttribute("wallet",wallet);
+        if(imageRepository.imageCheck(user.getId()) != 0) {
+            Image image = imageService.findImageByOwner_id(user);
+            String base64Image = java.util.Base64.getEncoder().encodeToString(image.getImageData());
+            String dataUri = "data:image/jpeg;base64," + base64Image;
+
+            m.addAttribute("image", dataUri);
+        }
         return "profile";
     }
 
@@ -105,7 +118,15 @@ public class UserController {
         return "basketpage";
     }
 
-
+    @PostMapping("/user/saveImage")
+    public String saveImage(@RequestParam("file") MultipartFile file, Principal p) throws IOException {
+        User user = userRepository.findByEmail(p.getName());
+        if(imageRepository.imageCheck(user.getId()) != 0) {
+            imageRepository.deleteByOwner_id(user.getId());
+        }
+        imageService.uploadImageForProfile(file, user.getId());
+        return "redirect:/user/profile";
+    }
 
 //    @GetMapping ("/user/basket")
 //    public String showBasket(Principal p, Model m) {

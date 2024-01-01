@@ -14,6 +14,7 @@ create TABLE if not exists advertisements
     description text,
     quantity    int,
     price       int,
+    seller_name text references users(name),
     seller_id   int references users (id)
 );
 

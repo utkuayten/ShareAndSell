@@ -23,4 +23,6 @@ public interface AdvertRepository extends JpaRepository<Advertisement, Long> {
     @Query("SELECT advert FROM Advertisement advert ")
     List<Advertisement> findAllAdverts();
 
+
+
 }

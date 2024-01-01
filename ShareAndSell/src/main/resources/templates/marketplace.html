@@ -90,7 +90,7 @@
         color: #c8e6c9;
     }
 
-    .date-input {
+    .date-input{
         border: none;
         width: 50px;
         background-color: transparent;
@@ -99,7 +99,7 @@
         color: #c8e6c9;
     }
 
-    .stock-input {
+    .stock-input{
         border: none;
         width: 50px;
         background-color: transparent;
@@ -138,8 +138,8 @@
 
 
     <div class="marketplace-items">
-        <!--/*@thymesVar id="advertisements" type="org.cs320.ozyegin.model.Advertisement"*/-->
         <div th:each="advertisement : ${advertisements}">
+            <!-- Use th:src attribute to dynamically set the image source -->
             <img th:src="${advertisement.getImage()}" alt="Product Photo"
                  style="width: 100px; height: 70px; border-radius: 75%; ">
             <h3 th:text="${advertisement.title}"></h3>
@@ -152,6 +152,9 @@
             </p>
             <p>
                 Date: <span th:text="${advertisement.getDateString()}" class="date-input"></span>
+            </p>
+            <p>
+                Published by: <span th:text="${advertisement.getSeller_name()}" class="seller-input"></span>
             </p>
             <div style="display: flex; align-items: center;">
                 <!-- Link for View Details -->
@@ -168,7 +171,6 @@
                     <input type="submit" value="Add to Basket" class="btn btn-secondary">
                 </form>
             </div>
-
         </div>
     </div>
 </section>

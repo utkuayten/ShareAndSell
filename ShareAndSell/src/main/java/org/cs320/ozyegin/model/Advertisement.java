@@ -23,6 +23,8 @@ public class Advertisement {
 
     private Long seller_id;
 
+    private String seller_name;
+
     private Date date;
     private byte[] imageData;
 
@@ -31,7 +33,7 @@ public class Advertisement {
         super();
     }
 
-    public Advertisement(String title, String description, int quantity, int price, Long seller_id, Date date, byte[] imageData) {
+    public Advertisement(String title, String description, int quantity, int price, Long seller_id, Date date, byte[] imageData, String seller_name) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
@@ -39,6 +41,7 @@ public class Advertisement {
         this.seller_id = seller_id;
         this.date = date;
         this.imageData = imageData;
+        this.seller_name = seller_name;
     }
 
     // Getters and setters
@@ -89,8 +92,15 @@ public class Advertisement {
         return seller_id;
     }
 
+    public String getSeller_name() {
+        return seller_name;
+    }
+
     public void setSeller_id(Long seller_id) {
         this.seller_id = seller_id;
+    }
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
     }
 
     public Date getDate() {
@@ -112,8 +122,13 @@ public class Advertisement {
     }
 
     public String getImage() {
-        String base64Image = java.util.Base64.getEncoder().encodeToString(ImageUtil.decompressImage(imageData));
-        return "data:image/*;base64," + base64Image;
+        if (imageData != null && imageData.length > 0) {
+            String base64Image = java.util.Base64.getEncoder().encodeToString(ImageUtil.decompressImage(imageData));
+            return "data:image/*;base64," + base64Image;
+        } else {
+            System.out.println("error getting images");
+            return "";
+        }
     }
 
 
@@ -127,6 +142,7 @@ public class Advertisement {
                 ", price=" + price +
                 ", seller_id=" + seller_id +
                 ", date=" + date +
+                ", seller_name=" + seller_name +
                 '}';
     }
 }

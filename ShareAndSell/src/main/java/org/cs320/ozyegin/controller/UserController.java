@@ -47,9 +47,10 @@ public class UserController {
     }
 
     @PostMapping("/user/sellProduct")
-    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p) throws IOException, IOException {
+    public String advertPanelSell(@RequestParam("file") MultipartFile file, @ModelAttribute Advertisement advert, Principal p,Model m) throws IOException, IOException {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
+        advert.setSeller_name(seller_user.getName());
         if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
             return "redirect:/user/sell?error";
         }

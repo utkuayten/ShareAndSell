@@ -38,4 +38,6 @@ public class AdvertServiceImpl implements AdvertService{
     public Advertisement findAdvertByID(Long id) {
         return advertRepository.findByID(id);
     }
+
+
 }

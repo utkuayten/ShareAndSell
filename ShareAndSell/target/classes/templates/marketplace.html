@@ -166,7 +166,9 @@
             </p>
             <div style="display: flex; align-items: center;">
                 <!-- Link for View Details -->
-                <a th:href="@{'/details/' + ${advertisement.id}}" class="btn btn-primary" style="margin-right: 10px;">View Details</a>
+                <a th:href="@{'/user/details/' + ${advertisement.id}}" class="btn btn-primary" style="margin-right: 10px;">View Details</a>
+
+
 
                 <!-- Form for specifying the quantity -->
                 <form id="orderForm" th:action="@{'/user/addBasket/' + ${advertisement.id}}" method="post">

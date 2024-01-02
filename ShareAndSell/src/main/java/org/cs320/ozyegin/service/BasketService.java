@@ -1,5 +1,6 @@
 package org.cs320.ozyegin.service;
 
+import org.cs320.ozyegin.dtonutil.BasketDto;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.Basket;
 import org.cs320.ozyegin.model.User;
@@ -18,4 +19,6 @@ public interface BasketService {
     Basket findBasketById(Long id);
 
     int totalPriceCalculator(List<Basket> basketList);
+
+    List<BasketDto> basketAdverts(List<Basket> basketList);
 }

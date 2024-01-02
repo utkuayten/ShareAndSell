@@ -1,34 +1,32 @@
-package org.cs320.ozyegin.model;
+package org.cs320.ozyegin.dtonutil;
 
-import jakarta.persistence.*;
+import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.service.AdvertService;
+import org.cs320.ozyegin.service.AdvertServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Entity
-@Table(name = "baskets")
-public class Basket {
+public class BasketDto {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private Long buyer_id;
     private Long product_id;
+    private Advertisement product;
     private int quantity;
 
-
-    public Basket() {
-        super();
-    }
-
-    public Basket(Long id, Long buyer_id, Long product_id, int quantity) {
+    public BasketDto(Long id, Long buyer_id, Long product_id, int quantity) {
         this.id = id;
         this.buyer_id = buyer_id;
         this.product_id = product_id;
         this.quantity = quantity;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public Long getId() {
         return id;
@@ -54,24 +52,20 @@ public class Basket {
         this.product_id = product_id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Advertisement getProduct() {
+        return product;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProduct(Advertisement product) {
+        this.product = product;
     }
-
 
     @Override
     public String toString() {
-        return "Basket{" +
+        return "BasketDto{" +
                 "id=" + id +
                 ", buyer_id=" + buyer_id +
                 ", product_id=" + product_id +
-                ", quantity=" + quantity +
                 '}';
     }
-
-
 }

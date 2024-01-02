@@ -10,6 +10,6 @@ public interface WalletService {
 
     Wallet updateBalance(Wallet wallet, int newBalance);
 
-    Wallet findWalletByOwner_id(User user);
+    Wallet findWalletByOwner(User user);
 
 }

@@ -1,71 +1,77 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-    }
-
-    .container {
-        margin-top: 50px;
-    }
-
-    .card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-header {
-        background-color: #28a745;
-        color: #fff;
-        padding: 15px;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-
-    .card-body {
-        padding: 20px;
-    }
-
-    label {
-        font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #28a745;
-        color: #fff;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #13593c;
-    }
-
-    .text-success {
-        color: #28a745;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-</style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #28a745;
+            color: #fff;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #13593c;
+        }
+
+        .text-success {
+            color: #28a745;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,24 +88,17 @@
 
                     <div class="card-body">
                         <form action="saveUser" method="post">
-                            <div class="mb-3">
-                                <label>Name : </label>
-                                <label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter your name">
-                                </label>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name">
                             </div>
-                            <div class="mb-3">
-                                <label>Email : </label>
-                                <label>
-                                    <input type="text" name="email" class="form-control" placeholder="Enter your email">
-                                </label>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
                             </div>
-                            <div class="mb-3">
-                                <label>Password : </label>
-                                <label>
-                                    <input type="password" name="password" class="form-control"
-                                           placeholder="Enter your password">
-                                </label>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
                             </div>
                             <button class="btn btn-primary col-md-12">Register</button>
                         </form>

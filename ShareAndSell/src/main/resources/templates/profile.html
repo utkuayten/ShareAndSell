@@ -1,20 +1,42 @@
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: url('zyro-image.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 1; /* Set z-index to a negative value to move it to the background */
+  }
+
   .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    overflow:auto;
-    width: 600px;
+    overflow: auto;
+    width: 100%; /* Set the width to 100% to fill the entire viewport */
   }
 
   .profile-section,
   .wallet-section {
-    flex: 1;
-    background-color: #4CAF50;
+    position: absolute;
+    background-color: rgba(76, 175, 80, 0.8); /* Background color with opacity */
     color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    width: 300px; /* Set a specific width for the sections */
+    height: 250px; /* Set a specific height for the sections */
+    z-index: -1; /* Set z-index to a positive value to bring it to the front */
+  }
+
+  .profile-section {
+    top: 100px; /* Set the top distance in pixels */
+    left: 100px; /* Set the left distance in pixels */
+  }
+
+  .wallet-section {
+    top: 100px; /* Set the top distance in pixels */
+    right: 100px; /* Set the right distance in pixels */
   }
 
   .profile-section h1,
@@ -28,29 +50,25 @@
     font-size: 18px;
   }
 
-  .blurred{
+  .blurred {
     filter: blur(1px);
   }
-
 </style>
+
 <!DOCTYPE html>
-  <html lang="en" xmlns:th="http://www.thymeleaf.org"
-        th:replace="~{base::layout(~{::section})}">
-  <body>
-  <div class="container">
-    <section class="profile-section">
-      <h1>My Profile</h1>
-      <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
-      <p>Contacts: [[${user.email}]]</p>
-    </section>
-    <section class="profile-section">
-      <h1>Profile Photo</h1>
-      <img th:src="${image}" alt="image" style="width: 100px; height: 70px; border-radius: 75%; ">
-    </section>
-    <section class="wallet-section">
-      <h2>My Wallet</h2>
-      <p>wallet id: [[${wallet.id}]]</p>
-      <p>balance: [[${wallet.balance}]]</p>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<body>
+<div class="container">
+  <section class="profile-section">
+    <h1>My Profile</h1>
+    <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
+    <p>Contacts: [[${user.email}]]</p>
+  </section>
+  <section class="wallet-section">
+    <h2>My Wallet</h2>
+    <p>wallet id: [[${wallet.id}]]</p>
+    <p>balance: [[${wallet.balance}]]</p>
 
       <form th:action="@{/user/profile/confirmBalance}" method="post" >
         <label for="addBalance">Add Balance:</label>
@@ -77,4 +95,3 @@
   </body>
 
   </html>
-

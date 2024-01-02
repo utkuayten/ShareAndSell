@@ -1,10 +1,13 @@
 package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
+import org.cs320.ozyegin.service.AdvertService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "baskets")
 public class Basket {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

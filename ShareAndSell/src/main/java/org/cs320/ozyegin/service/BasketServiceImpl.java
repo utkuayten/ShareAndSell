@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -20,11 +21,17 @@ public class BasketServiceImpl implements BasketService {
     private AdvertService advertService;
 
     @Override
-    public Basket saveBasket(Basket basket, Advertisement advertisement, int quantity, User user) throws IOException {
+    public void saveBasket(Basket basket, Advertisement advertisement, int quantity, User user) throws IOException {
         basket.setBuyer_id(user.getId());
         basket.setProduct_id(advertisement.getId());
-        basket.setQuantity(quantity);
-        return basketRepository.save(basket);
+        Basket alreadyExists = basketRepository.findBasketByProductId(advertisement.getId(), user.getId());
+        if (alreadyExists == null) {
+            basket.setQuantity(quantity);
+            basketRepository.save(basket);
+        } else {
+            int qt = alreadyExists.getQuantity();
+            basketRepository.updateBasketQuantityByProductId(advertisement.getId(), user.getId(), quantity + qt);
+        }
     }
 
     @Override
@@ -40,6 +47,16 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public Basket findBasketById(Long id) {
         return basketRepository.findBasketById(id);
+    }
+
+    @Override
+    public int totalPriceCalculator(List<Basket> basketList) {
+        int total = 0;
+        Advertisement advertisement = new Advertisement();
+        for (Basket item : basketList) {
+            total += item.getQuantity() * advertService.findAdvertByID(item.getProduct_id()).getPrice();
+        }
+        return total;
     }
 
 

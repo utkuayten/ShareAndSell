@@ -119,6 +119,8 @@ public class UserController {
         model.addAttribute("user", user);
         List<Basket> basketList = basketService.findBasketByUser(user);
         model.addAttribute("basket", basketList);
+        int totalPrice = basketService.totalPriceCalculator(basketList);
+        model.addAttribute("total_price", totalPrice);
         return "basketpage";
     }
 

@@ -24,4 +24,13 @@ public interface BasketRepository extends JpaRepository<Basket, Long> {
 
     @Query("SELECT basket FROM Basket basket WHERE basket.id = :id")
     Basket findBasketById(@Param("id") Long id);
+
+    @Query("SELECT basket FROM Basket basket WHERE basket.product_id = :product_id and  basket.buyer_id =:buyer_id")
+    Basket findBasketByProductId(@Param("product_id") Long product_id, @Param("buyer_id") Long buyer_id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Basket basket SET basket.quantity = :quantity WHERE basket.product_id = :product_id AND basket.buyer_id = :buyer_id")
+    void updateBasketQuantityByProductId(@Param("product_id") Long product_id, @Param("buyer_id") Long buyer_id, @Param("quantity") int quantity);
+
 }

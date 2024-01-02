@@ -24,5 +24,4 @@ public interface AdvertRepository extends JpaRepository<Advertisement, Long> {
     List<Advertisement> findAllAdverts();
 
 
-
 }

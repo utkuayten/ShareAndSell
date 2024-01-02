@@ -3,7 +3,9 @@ package org.cs320.ozyegin.model;
 import jakarta.persistence.*;
 import org.cs320.ozyegin.dtonutil.ImageUtil;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 
 
 @Entity
@@ -131,7 +133,14 @@ public class Advertisement {
         }
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Advertisement that = (Advertisement) o;
+        return quantity == that.quantity && price == that.price && Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(seller_name, that.seller_name) && Arrays.equals(imageData, that.imageData);
+    }
+    
     @Override
     public String toString() {
         return "Advertisement{" +

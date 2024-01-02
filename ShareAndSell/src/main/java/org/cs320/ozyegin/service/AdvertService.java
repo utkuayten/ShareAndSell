@@ -16,4 +16,6 @@ public interface AdvertService {
     List<Advertisement> findByPartialTitle(String title);
 
     Advertisement findAdvertByID(Long id);
+
+
 }

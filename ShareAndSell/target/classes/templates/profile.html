@@ -33,6 +33,8 @@
   .profile-photo-section {
     top: 100px;
     left: 500px;
+    align-items: center;
+    align-content: center;
   }
 
   .profile-photo-upload-section {
@@ -55,6 +57,7 @@
   .wallet-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   .profile-section h4,
@@ -74,8 +77,9 @@
 
 <div class="container">
   <section class="profile-section">
+    <span class="blurred">#[[${user.id}]]</span>
     <h1>My Profile</h1>
-    <p>Hello [[${user.name}]]<span class="blurred">#[[${user.id}]]</span> !</p>
+    <p>Hello [[${user.name}]]</p>
     <p>Contacts: [[${user.email}]]</p>
   </section>
   <section class="profile-photo-section">

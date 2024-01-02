@@ -1,35 +1,99 @@
+<style>
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 800px;
+        min-height: 600px; /* Set the desired height */
+        padding: 20px;
+        background-color: #c8e6c9; /* Pale green */
+        border: 1px solid #006400; /* Dark green */
+        border-radius: 8px;
+        margin: auto; /* Center both horizontally and vertically */
+        position: absolute; /* Positioning for centering */
+        top: 0;
+        bottom: 0; /* Stretch to full height */
+        left: 0;
+        right: 0; /* Stretch to full width */
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+        flex: 1; /* Occupy available space */
+    }
+
+    .details {
+        display: flex;
+        align-items: normal;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1; /* Occupy available space */
+    }
+
+    h1, p {
+        color: #006400; /* Dark green */
+        margin: 0;
+    }
+
+    .img {
+        max-width: 50%;
+        padding-bottom: 20px; /* Spacing between image and details */
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        border: 3px solid #006400; /* Dark green border */
+    }
+
+    h1 {
+        color: #006400; /* Dark green */
+        margin: 0;
+        font-weight: bold; /* Make the title bold */
+        font-size: 24px; /* Adjust font size as needed */
+    }
+
+    .details {
+        display: flex;
+        align-items: normal;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1; /* Occupy available space */
+        text-align: center; /* Align text in the center */
+    }
+
+    .detail-label {
+        font-weight: bold; /* Make detail labels bold */
+        color: antiquewhite;
+    }
+
+</style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="${advertisement.title}">Product Details</title>
-    <style>
-        body {
-            background-color: #eaf4ea; /* Light green */
-        }
-
-        .card {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #c8e6c9; /* Pale green */
-            border: 1px solid #006400; /* Dark green */
-            border-radius: 8px;
-        }
-
-        h1, p {
-            color: #006400; /* Dark green */
-        }
-    </style>
-</head>
-<body>
-<div class="card">
-    <h1 th:text="${advertisement.title}">Product Details</h1>
-
-    <!-- Display other details of the product -->
-    <p th:text="${advertisement.description}">Product description goes here.</p>
-
-    <!-- Add more details as needed -->
-</div>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<section style="position: relative; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div class="card">
+        <div class="card-header">
+            <h1 th:text="${advertisement.title}">Product Details</h1>
+        </div>
+        <div class="img">
+            <img th:src="${advertisement.getImage()}" alt="Product Photo">
+        </div>
+        <div class="details">
+            <p class="detail-label">Description:</p>
+            <p th:text="${advertisement.description}"></p>
+            <p class="detail-label">Price:</p>
+            <p th:text="${advertisement.price}">$</p>
+            <p class="detail-label">Date:</p>
+            <p th:text="${advertisement.dateString}"></p>
+            <p class="detail-label">Seller:</p>
+            <p th:text="${advertisement.seller_name}"></p>
+        </div>
+    </div>
+</section>
 </html>

@@ -1,68 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Orders</title>
-    <style>
-        /* Styling for the boxes */
-        .box {
-            width: 200px;
-            height: 100px;
-            background-color: green;
-            color: white;
-            text-align: center;
-            line-height: 100px;
-            margin: 20px;
-            float: left;
-        }
-
-        /* Clear floats */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-    </style>
-</head>
 
 <body>
-
-<div class="basket">
-    <div th:each="item : ${sold}" class="basket-item">
-        <h1>Items that you sold!</h1>
-        <div class="item-details">
-            <div class="image">
-                <img th:src="${item.getImage()}" alt="Product Photo"
-                     style="width: 150px; height: 150px; border-radius: 85%;">
-            </div>
-            <div class="text-info">
-                <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
-                <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
-                    th:text="${item.getDescription()}"></h3>
-                <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="basket">
-    <div th:each="item : ${bought}" class="basket-item">
-        <h1>Items that you bought!</h1>
-        <div class="item-details">
-            <div class="image">
-                <img th:src="${item.getImage()}" alt="Product Photo"
-                     style="width: 150px; height: 150px; border-radius: 85%;">
-            </div>
-            <div class="text-info">
-                <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
-                <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
-                    th:text="${item.getDescription()}"></h3>
-                <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+<section>
+    <div class="basket">
+        <div th:each="item : ${sold}" class="basket-item">
+            <h1>Items that you sold!</h1>
+            <div class="item-details">
+                <div class="image">
+                    <img th:src="${item.getImage()}" alt="Product Photo"
+                         style="width: 150px; height: 150px; border-radius: 85%;">
+                </div>
+                <div class="text-info">
+                    <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
+                    <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
+                        th:text="${item.getDescription()}"></h3>
+                    <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<section>
+    <div class="basket">
+        <div th:each="item : ${bought}" class="basket-item">
+            <h1>Items that you bought!</h1>
+            <div class="item-details">
+                <div class="image">
+                    <img th:src="${item.getImage()}" alt="Product Photo"
+                         style="width: 150px; height: 150px; border-radius: 85%;">
+                </div>
+                <div class="text-info">
+                    <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
+                    <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
+                        th:text="${item.getDescription()}"></h3>
+                    <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 </body>
 </html>

@@ -205,6 +205,7 @@ public class UserController {
     @GetMapping("/user/myOrders")
     public String myOrders(Principal p, Model m) {
         User user = userRepository.findByEmail(p.getName());
+        m.addAttribute("user", user);
         List<Transaction> transSold = transactionRepository.findSoldTransactions(user.getId());
         List<Transaction> transBought = transactionRepository.findBoughtTransactions(user.getId());
 

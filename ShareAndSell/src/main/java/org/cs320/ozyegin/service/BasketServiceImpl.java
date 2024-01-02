@@ -76,5 +76,10 @@ public class BasketServiceImpl implements BasketService {
         return basketDtos;
     }
 
-
-}
+public int findProductQuantInBasket(Long product_id, Long buyer_id){
+       try {
+          return basketRepository.findBasketByProductId(product_id, buyer_id).getQuantity();
+       }catch (NullPointerException e) {
+           return 0;
+       }
+}}

@@ -110,9 +110,15 @@ public class UserController {
     }
 
     @PostMapping("/user/addBasket/{advertisementId}")
-    public String placeOrder(@PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p) throws IOException {
+    public String placeOrder(@PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p , HttpSession session) throws IOException {
         User buyer = userRepository.findByEmail(p.getName());
         Advertisement advert = advertService.findAdvertByID(advertID);
+
+        if(basketService.findProductQuantInBasket(advertID, buyer.getId()) >= advert.getQuantity()){
+            session.setAttribute("msg", "You cannot order more than stocks.");
+            return "redirect:/user/marketplace";
+        }
+        session.setAttribute("msg", "Product in basket !!");
         basketService.saveBasket(new Basket(), advert, quantity, buyer);
         return "redirect:/user/marketplace";
     }

@@ -47,7 +47,6 @@ public class Wallet {
     public void setBalance(int balance) {
         this.balance = balance;
     }
-
     public void alterBalance(int change) { this.balance += change; }
     public void addBalance(int balance)  { this.balance += balance; }
     @Override

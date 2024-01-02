@@ -88,7 +88,6 @@ public class UserController {
             User seller = new User();
             for (Basket item:basket) {
                 int i = advertService.getQuantityById(item.getProduct_id()) - item.getQuantity();
-
                 seller = userService.findByID(advertService.findAdvertByID(item.getProduct_id()).getSeller_id());
                 if(i==0){
                     advertService.updateAdvertStat(item.getProduct_id());

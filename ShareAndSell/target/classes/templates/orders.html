@@ -1,47 +1,114 @@
-<!DOCTYPE html>
+<style>
+    section {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Styling for the boxes */
+    .basket {
+        margin-bottom: 40px;
+        background-color: yellowgreen;
+    }
+
+    .basket-item {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .item-details {
+        display: flex;
+    }
+
+    .image {
+        flex: 1;
+    }
+
+    .image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 85%;
+        display: block;
+        margin: 15px auto;
+    }
+
+    .text-info {
+        flex: 2;
+        padding: 20px;
+    }
+
+    .title,
+    .seller{
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        margin: 0;
+        color: #555;
+    }
+
+    .description {
+        color: #777;
+        font-size: smaller;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #009688;
+    }
+</style>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
-
-
 <body>
 <section>
+    <th:block th:if="${!sold.isEmpty()}">
     <div class="basket">
+        <h1>Items that you sold!</h1>
         <div th:each="item : ${sold}" class="basket-item">
-            <h1>Items that you sold!</h1>
             <div class="item-details">
                 <div class="image">
-                    <img th:src="${item.getImage()}" alt="Product Photo"
-                         style="width: 150px; height: 150px; border-radius: 85%;">
+                    <img th:src="${item.getImage()}" alt="Product Photo">
                 </div>
                 <div class="text-info">
                     <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
-                    <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
-                        th:text="${item.getDescription()}"></h3>
-                    <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+                    <h3 class="description" th:text="${item.getDescription()}"></h3>
+                    <h3 class="price" th:text="'Price: ' + ${item.getPrice()}"></h3>
+                    <h3 class="seller" th:text="'Seller: ' + ${item.seller_name}"></h3>
                 </div>
             </div>
         </div>
     </div>
+    </th:block>
 </section>
 <section>
+    <th:block th:if="${!bought.isEmpty()}">
     <div class="basket">
+        <h1>Items that you bought!</h1>
         <div th:each="item : ${bought}" class="basket-item">
-            <h1>Items that you bought!</h1>
             <div class="item-details">
                 <div class="image">
-                    <img th:src="${item.getImage()}" alt="Product Photo"
-                         style="width: 150px; height: 150px; border-radius: 85%;">
+                    <img th:src="${item.getImage()}" alt="Product Photo">
                 </div>
                 <div class="text-info">
                     <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
-                    <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
-                        th:text="${item.getDescription()}"></h3>
-                    <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+                    <h3 class="description" th:text="${item.getDescription()}"></h3>
+                    <h3 class="price" th:text="'Price: ' + ${item.getPrice()}"></h3>
+                    <h3 class="seller" th:text="'Seller: ' + ${item.seller_name}"></h3>
                 </div>
             </div>
         </div>
     </div>
+    </th:block>
 </section>
-
-
 </body>
 </html>

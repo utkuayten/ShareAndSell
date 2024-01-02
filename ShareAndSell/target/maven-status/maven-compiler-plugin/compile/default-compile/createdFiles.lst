@@ -13,6 +13,7 @@ org\cs320\ozyegin\data_layer\BasketRepository.class
 org\cs320\ozyegin\service\TransactionServiceImp.class
 org\cs320\ozyegin\model\Transaction.class
 org\cs320\ozyegin\model\Basket.class
+org\cs320\ozyegin\dtonutil\BasketDto.class
 org\cs320\ozyegin\data_layer\AdvertRepository.class
 org\cs320\ozyegin\service\UserServiceImpl.class
 org\cs320\ozyegin\dtonutil\UserDto.class

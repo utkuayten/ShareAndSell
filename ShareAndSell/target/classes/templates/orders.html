@@ -28,14 +28,41 @@
 
 <body>
 
-<div class="box">
-    <h2>Basket</h2>
-</div>
-<div class="box">
-    <h2>My Orders</h2>
+<div class="basket">
+    <div th:each="item : ${sold}" class="basket-item">
+        <h1>Items that you sold!</h1>
+        <div class="item-details">
+            <div class="image">
+                <img th:src="${item.getImage()}" alt="Product Photo"
+                     style="width: 150px; height: 150px; border-radius: 85%;">
+            </div>
+            <div class="text-info">
+                <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
+                <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
+                    th:text="${item.getDescription()}"></h3>
+                <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="clearfix"></div>
+<div class="basket">
+    <div th:each="item : ${bought}" class="basket-item">
+        <h1>Items that you bought!</h1>
+        <div class="item-details">
+            <div class="image">
+                <img th:src="${item.getImage()}" alt="Product Photo"
+                     style="width: 150px; height: 150px; border-radius: 85%;">
+            </div>
+            <div class="text-info">
+                <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
+                <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
+                    th:text="${item.getDescription()}"></h3>
+                <h3 th:text="'Price: ' + ${item.getPrice()}"></h3>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

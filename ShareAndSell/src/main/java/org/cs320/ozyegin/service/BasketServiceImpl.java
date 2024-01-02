@@ -33,12 +33,14 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public double totalPriceByBasket(List<Basket> basketList) {
-        double total_price = 0;
-        for (Basket item : basketList) {
-            Advertisement advert = advertService.findAdvertByID(item.getProduct_id());
-            total_price += advert.getPrice() * item.getQuantity();
-        }
-        return total_price;
+    public void deleteFromBasketByBasket(Basket basket) {
+        basketRepository.deleteByBasketId(basket.getId());
     }
+
+    @Override
+    public Basket findBasketById(Long id) {
+        return basketRepository.findBasketById(id);
+    }
+
+
 }

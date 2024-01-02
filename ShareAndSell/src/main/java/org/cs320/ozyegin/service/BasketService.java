@@ -13,5 +13,7 @@ public interface BasketService {
 
     List<Basket> findBasketByUser(User user);
 
-    double totalPriceByBasket(List<Basket> basketList);
+    void deleteFromBasketByBasket(Basket basket);
+
+    Basket findBasketById(Long id);
 }

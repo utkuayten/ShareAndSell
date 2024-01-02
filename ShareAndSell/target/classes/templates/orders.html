@@ -48,7 +48,7 @@
     }
 
     .title,
-    .seller{
+    .seller {
         color: #333;
         margin-bottom: 10px;
     }
@@ -92,22 +92,22 @@
 </section>
 <section>
     <th:block th:if="${!bought.isEmpty()}">
-    <div class="basket">
+        <div class="basket">
         <h1>Items that you bought!</h1>
-        <div th:each="item : ${bought}" class="basket-item">
-            <div class="item-details">
-                <div class="image">
-                    <img th:src="${item.getImage()}" alt="Product Photo">
-                </div>
-                <div class="text-info">
-                    <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
-                    <h3 class="description" th:text="${item.getDescription()}"></h3>
-                    <h3 class="price" th:text="'Price: ' + ${item.getPrice()}"></h3>
-                    <h3 class="seller" th:text="'Seller: ' + ${item.seller_name}"></h3>
+            <div th:each="item : ${bought}" class="basket-item">
+                <div class="item-details">
+                    <div class="image">
+                        <img th:src="${item.getImage()}" alt="Product Photo">
+                    </div>
+                    <div class="text-info">
+                        <h3 class="title"><b th:text="${item.getTitle()}"></b></h3>
+                        <h3 class="description" th:text="${item.getDescription()}"></h3>
+                        <h3 class="price" th:text="'Price: ' + ${item.getPrice()}"></h3>
+                        <h3 class="seller" th:text="'Seller: ' + ${item.seller_name}"></h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </th:block>
 </section>
 </body>

@@ -121,6 +121,10 @@
 
 
 
+    <th:block th:if="${session.msg}">
+        <p class="text-center text-success fs-4">[[${session.msg}]]</p>
+    </th:block>
+
     <div class="search-form">
         <form th:action="@{/user/marketplace}" method="get" id="searchForm">
             <input type="text" name="query" class="search-input" placeholder="Search by title..." th:value="${query}" />

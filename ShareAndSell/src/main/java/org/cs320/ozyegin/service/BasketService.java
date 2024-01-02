@@ -21,5 +21,6 @@ public interface BasketService {
 
     int totalPriceCalculator(List<Basket> basketList);
 
+    int findProductQuantInBasket(Long product_id, Long buyer_id);
     List<BasketDto> basketAdverts(List<Basket> basketList);
 }

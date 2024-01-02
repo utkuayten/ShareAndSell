@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
-
+    
 </head>
+
+
 <body>
 <section>
     <div class="container p-3">
@@ -15,24 +17,25 @@
                     <div class="card-header text-center fs-4">Login Page</div>
                     <th:block th:if="${param.error}">
                         <p class="text-center text-danger fs-5">
-                            [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                            [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                        </p>
                     </th:block>
                     <th:block th:if="${param.logout}">
                         <p class="text-center text-success fs-5">Logout Successfully</p>
                     </th:block>
                     <div class="card-body">
                         <form action="/userLogin" method="post">
-                            <div class="mb-3">
-                                <label>Enter Email</label> <label>
-                                <input type="text" name="username"
-                                       class="form-control">
-                            </label>
+                            <div class="mb-3 row">
+                                <label for="username" class="col-sm-3 col-form-label">Enter Email</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="username" id="username" class="form-control">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label>Enter Password</label> <label>
-                                <input type="password"
-                                       name="password" class="form-control">
-                            </label>
+                            <div class="mb-3 row">
+                                <label for="password" class="col-sm-3 col-form-label">Enter Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" id="password" class="form-control">
+                                </div>
                             </div>
                             <button class="btn btn-primary col-md-12">Login</button>
                         </form>
@@ -40,10 +43,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
-
-
 </body>
+
 </html>

@@ -138,10 +138,12 @@
         padding-left: 20px; /* Adjust this value for spacing */
     }
 
+
     .text-info h3{
         color: wheat;
     }
     
+ main
 </style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
@@ -162,11 +164,13 @@
                     </form>
                     <div class="item-details">
                         <div class="image">
+
                             <img th:src="${item.getProduct().getImage()}" alt="Product Photo" style="width: 150px; height: 150px; border-radius: 85%;">
                         </div>
                         <div class="text-info">
                             <h3 class="title"><b th:text="${item.getProduct().getTitle()}"></b></h3>
                             <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif" th:text="${item.getProduct().getDescription()}"></h3>
+ main
                             <h3 th:text="'Price: ' + ${item.getProduct().getPrice()}"></h3>
                         </div>
                     </div>

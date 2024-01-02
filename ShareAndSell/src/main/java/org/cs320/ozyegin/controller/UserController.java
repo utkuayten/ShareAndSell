@@ -77,8 +77,27 @@ public class UserController {
         } else {
             session.setAttribute("msg", "Order is successful.");
             List<Basket> basket = basketService.findBasketByUser(user);
+            for (Basket item:basket) {
+            int i = advertService.getQuantityById(item.getProduct_id()) - item.getQuantity();
+            if(i==0){
+                advertService.updateAdvertStat(item.getProduct_id());
+                advertService.updateAdvertQuantityByProductId(item.getProduct_id(),i);
+            }
+            else{
+                advertService.updateAdvertQuantityByProductId(item.getProduct_id(), i);
+            }
+
+
+            }
+
+
             transactionService.createMultipleTransactionsByBasket(basket, address);
             basketService.deleteFromBasketByUser(user);
+
+
+
+
+
         }
         return "redirect:/user/basket";
     }
@@ -157,7 +176,39 @@ public class UserController {
         return "redirect:/user/profile";
     }
 
-//    @GetMapping ("/user/basket")
+
+    @PostMapping("/user/buy/{id}")
+    public String buyProduct(
+            @PathVariable Long id,
+            @RequestParam(name = "quantity", defaultValue = "1") int quantity,
+            Model model,
+            Principal principal
+    ) {
+        User user = userRepository.findByEmail(principal.getName());
+        model.addAttribute("user", user);
+
+        // Call the service method to handle the buying logic
+        boolean success = advertService.buyProduct(id, quantity);
+
+        if (success) {
+            // Update the model with a success message or any other necessary information
+            model.addAttribute("buySuccess", true);
+        } else {
+            // Update the model with a failure message or any other necessary information
+            model.addAttribute("buyFailure", true);
+        }
+
+        // Redirect back to the product details page or any other appropriate page
+        return "redirect:/user/details/" + id;
+    }
+
+
+
+
+
+
+
+    //    @GetMapping ("/user/basket")
 //    public String showBasket(Principal p, Model m) {
 //        User user = userRepository.findByEmail(p.getName());
 //        m.addAttribute("user", user);

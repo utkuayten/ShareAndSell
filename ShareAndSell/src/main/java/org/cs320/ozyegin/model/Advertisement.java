@@ -28,6 +28,16 @@ public class Advertisement {
     private Date date;
     private byte[] imageData;
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    private boolean active;
+
 
     public Advertisement() {
         super();

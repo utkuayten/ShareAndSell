@@ -18,8 +18,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findAllTransactions();
 
 
-    @Query("SELECT transaction FROM Transaction transaction WHERE transaction.buyer_id = :buyer_id and transaction.status = :status")
-    List<Transaction> findBuyerTransactionByStatus(@Param("buyer_id") Long buyerId, @Param("status") String status);
 
 
 }

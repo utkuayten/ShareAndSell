@@ -66,6 +66,8 @@ public class BasketDto {
                 "id=" + id +
                 ", buyer_id=" + buyer_id +
                 ", product_id=" + product_id +
+                ", product=" + product +
+                ", quantity=" + quantity +
                 '}';
     }
 }

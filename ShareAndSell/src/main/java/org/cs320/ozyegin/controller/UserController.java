@@ -1,5 +1,6 @@
 package org.cs320.ozyegin.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.cs320.ozyegin.data_layer.ImageRepository;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.dtonutil.BasketDto;
@@ -60,6 +61,26 @@ public class UserController {
         }
         advertService.saveAdvertisement(advert, file);
         return "redirect:/user/sell";
+    }
+
+    @PostMapping("/user/checkout")
+    public String userCheckout(@RequestParam("address") String address,
+                               @RequestParam("total_price") int totalPrice,
+                               @RequestParam("wallet_balance") int walletBalance,
+                               HttpSession session,
+                               Principal p) {
+        User user = userService.findByEmail(p.getName());
+
+        if (totalPrice > walletBalance) {
+            session.setAttribute("msg", "Insufficient balance.");
+            return "redirect:/user/basket";
+        } else {
+            session.setAttribute("msg", "Order is successful.");
+            List<Basket> basket = basketService.findBasketByUser(user);
+            transactionService.createMultipleTransactionsByBasket(basket, address);
+            basketService.deleteFromBasketByUser(user);
+        }
+        return "redirect:/user/basket";
     }
 
     @GetMapping("/user/removeItem")

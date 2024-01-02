@@ -1,6 +1,7 @@
 package org.cs320.ozyegin.service;
 
 
+import org.cs320.ozyegin.data_layer.AdvertRepository;
 import org.cs320.ozyegin.data_layer.TransactionRepository;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.data_layer.WalletRepository;
@@ -30,12 +31,16 @@ public class TransactionServiceImp implements TransactionService {
 
     @Autowired
     public AdvertService advertService;
+
+    @Autowired
+    private AdvertRepository advertRepository;
     @Override
-    public Transaction saveTransaction(Transaction transaction, User buyer, Basket basket, String address) {
+    public Transaction saveTransaction(Transaction transaction, User buyer, Basket basket, String address, User seller) {
         transaction.setProduct_id(basket.getProduct_id());
         transaction.setQuantity(basket.getQuantity());
         transaction.setBuyer_id(buyer.getId());
         transaction.setAddress(address);
+        transaction.setSeller_id(seller.getId());
         return transactionRepository.save(transaction);
     }
 
@@ -49,7 +54,8 @@ public class TransactionServiceImp implements TransactionService {
         List<Transaction> transactions = new LinkedList<>();
         for (Basket item : basket) {
             User buyer = userRepository.findByID(item.getBuyer_id());
-            transactions.add(saveTransaction(new Transaction(), buyer, item, address));
+            User seller = userRepository.findByID(advertRepository.findByIdForOrder(item.getProduct_id()).getSeller_id());
+            transactions.add(saveTransaction(new Transaction(), buyer, item, address, seller));
         }
         return transactions;
     }

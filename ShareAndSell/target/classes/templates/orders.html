@@ -29,8 +29,8 @@
 <body>
 
 <div class="basket">
+    <h1>Items that you sold!</h1>
     <div th:each="item : ${sold}" class="basket-item">
-        <h1>Items that you sold!</h1>
         <div class="item-details">
             <div class="image">
                 <img th:src="${item.getImage()}" alt="Product Photo"
@@ -47,8 +47,8 @@
 </div>
 
 <div class="basket">
+    <h1>Items that you bought!</h1>
     <div th:each="item : ${bought}" class="basket-item">
-        <h1>Items that you bought!</h1>
         <div class="item-details">
             <div class="image">
                 <img th:src="${item.getImage()}" alt="Product Photo"

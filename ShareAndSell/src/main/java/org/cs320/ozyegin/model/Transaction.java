@@ -13,19 +13,17 @@ public class Transaction {
     private Long product_id;
     private Long buyer_id;
     private int quantity;
-    private String status;
     private String address;
     public Transaction(){
         super();
     }
 
-    public Transaction(Long id, String address, Long product_id, Long buyer_id, int quantity, String status) {
+    public Transaction(Long id, String address, Long product_id, Long buyer_id, int quantity) {
         this.id = id;
         this.address = address;
         this.buyer_id = buyer_id;
         this.product_id = product_id;
         this.quantity = quantity;
-        this.status = status;
     }
 
     public Long getId() {
@@ -72,13 +70,6 @@ public class Transaction {
         this.quantity = quantity;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     @Override
     public String toString() {
@@ -87,7 +78,6 @@ public class Transaction {
                 ", buyer_id=" + buyer_id +
                 ", product_id=" + product_id +
                 ", quantity=" + quantity +
-                ", status='" + status + '\'' +
                 '}';
     }
 }

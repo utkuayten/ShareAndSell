@@ -69,9 +69,19 @@
         margin: 0;
     }
 
-    /* Checkbox style */
-    .item-checkbox {
-        margin-right: 10px;
+    .close-btn {
+        width: 30px; /* Adjust button width and height */
+        height: 30px;
+        border-radius: 50%; /* Make it a circle */
+        border: none;
+        background-color: #ff0000; /* Background color for the circle */
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .address-box {
@@ -103,6 +113,7 @@
     .small-details {
         font-size: 14px;
     }
+
     .address-box h2 {
         color: #ffffff;
         text-align: center;
@@ -110,11 +121,10 @@
 
 </style>
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>Basket Items</title>
 </head>
 <body>
 <section>
@@ -123,12 +133,13 @@
             <div class="basket">
                 <!-- Basket items as cards -->
                 <div th:each="item : ${basket}" class="basket-item">
-                    <label>
-                        <input type="checkbox" class="item-checkbox">
-                    </label> <!-- Checkbox added -->
+                    <form th:action="@{/user/removeItem}" method="get">
+                        <input type="hidden" th:name="basketId" th:value="${item.id}">
+                        <button type="submit" class="close-btn">X</button>
+                    </form>
                     <div class="item-details">
                         <h3 th:text="${item.quantity}"></h3>
-                        <h3 th:text="${item.product_id}"></h3>
+                        <h3 th:text="${item.buyer_id}"></h3>
                     </div>
                     <!-- Removed action buttons from here -->
                 </div>

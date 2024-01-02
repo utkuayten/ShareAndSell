@@ -63,6 +63,13 @@ public class UserController {
         return "redirect:/user/sell";
     }
 
+    @GetMapping("/user/removeItem")
+    public String removeItem(@RequestParam("basketId") Long basketId, Principal p) {
+        Basket basket = basketService.findBasketById(basketId);
+        basketService.deleteFromBasketByBasket(basket);
+        return "redirect:/user/basket";
+    }
+
     @PostMapping("/user/addBasket/{advertisementId}")
     public String placeOrder(@PathVariable("advertisementId") Long advertID, @RequestParam("quantity") int quantity, Principal p) throws IOException {
         User buyer = userRepository.findByEmail(p.getName());

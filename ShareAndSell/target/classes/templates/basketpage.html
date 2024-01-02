@@ -84,6 +84,7 @@
         align-items: center;
     }
 
+
     .address-box {
         border: 1px solid #000;
         padding: 10px;
@@ -119,6 +120,28 @@
         text-align: center;
     }
 
+    .item-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Splits container into two columns */
+        align-items: center;
+    }
+
+    .image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .text-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px; /* Adjust this value for spacing */
+    }
+
+    .text-info h3{
+        color: wheat;
+    }
+    
 </style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
@@ -130,6 +153,7 @@
 <section>
     <div class="basket-container">
         <div class="basket-wrapper">
+
             <div class="basket">
                 <div th:each="item : ${basket}" class="basket-item">
                     <form th:action="@{/user/removeItem}" method="get">
@@ -137,10 +161,15 @@
                         <button type="submit" class="close-btn">X</button>
                     </form>
                     <div class="item-details">
-                        <h3 th:text="${item.quantity}"></h3>
-                        <h3 th:text="${item.buyer_id}"></h3>
+                        <div class="image">
+                            <img th:src="${item.getProduct().getImage()}" alt="Product Photo" style="width: 150px; height: 150px; border-radius: 85%;">
+                        </div>
+                        <div class="text-info">
+                            <h3 class="title"><b th:text="${item.getProduct().getTitle()}"></b></h3>
+                            <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif" th:text="${item.getProduct().getDescription()}"></h3>
+                            <h3 th:text="'Price: ' + ${item.getProduct().getPrice()}"></h3>
+                        </div>
                     </div>
-                    <!-- Removed action buttons from here -->
                 </div>
             </div>
 
@@ -153,8 +182,7 @@
 
                 <div class="small-details">
                     <p>Total Price: <span th:text="${total_price}"></span></p>
-                    <h3>Wallet Balance: [Input from Controller]</h3>
-                    <h3>Balance after : </h3>
+                    <p>Wallet Balance: <span th:text="${wallet.getBalance()}"></span></p>
                 </div>
                 <div class="checkout">
                     <button>Buy Now</button>

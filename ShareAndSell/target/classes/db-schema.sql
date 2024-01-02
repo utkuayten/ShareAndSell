@@ -32,7 +32,7 @@ create TABLE if not exists transactions
     product_id int REFERENCES advertisements (id),
     buyer_id   int REFERENCES users (id),
     quantity   int,
-    address text,
+    address    text,
     status     text
 );
 

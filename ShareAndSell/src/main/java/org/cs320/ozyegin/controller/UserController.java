@@ -2,7 +2,7 @@ package org.cs320.ozyegin.controller;
 
 import org.cs320.ozyegin.data_layer.ImageRepository;
 import org.cs320.ozyegin.data_layer.UserRepository;
-import org.cs320.ozyegin.dtonutil.ImageUtil;
+import org.cs320.ozyegin.dtonutil.BasketDto;
 import org.cs320.ozyegin.model.*;
 import org.cs320.ozyegin.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -82,7 +81,7 @@ public class UserController {
     public String profile(Principal p, Model m) {
         User user = userRepository.findByEmail(p.getName());
         m.addAttribute("user", user);
-        Wallet wallet = walletService.findWalletByOwner_id(user);
+        Wallet wallet = walletService.findWalletByOwner(user);
         m.addAttribute("wallet",wallet);
         if(imageRepository.imageCheck(user.getId()) != 0) {
             Image image = imageService.findImageByOwner_id(user);
@@ -98,7 +97,7 @@ public class UserController {
     @PostMapping("/user/profile/confirmBalance")
     public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
         User user = userRepository.findByEmail(p.getName());
-        Wallet wallet = walletService.findWalletByOwner_id(user);
+        Wallet wallet = walletService.findWalletByOwner(user);
         System.out.println("New Balance: " + addBalance);
         if (wallet != null) {
             walletService.updateBalance(wallet,addBalance);
@@ -116,10 +115,13 @@ public class UserController {
     @GetMapping("/user/basket")
     public String basketPage(Principal p, Model model) {
         User user = userRepository.findByEmail(p.getName());
-        model.addAttribute("user", user);
+        Wallet wallet = walletService.findWalletByOwner(user);
         List<Basket> basketList = basketService.findBasketByUser(user);
-        model.addAttribute("basket", basketList);
+        List<BasketDto> basketAdverts = basketService.basketAdverts(basketList);
         int totalPrice = basketService.totalPriceCalculator(basketList);
+        model.addAttribute("wallet", wallet);
+        model.addAttribute("user", user);
+        model.addAttribute("basket", basketAdverts);
         model.addAttribute("total_price", totalPrice);
         return "basketpage";
     }

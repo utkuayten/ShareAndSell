@@ -1,6 +1,7 @@
 package org.cs320.ozyegin.service;
 
 import org.cs320.ozyegin.data_layer.BasketRepository;
+import org.cs320.ozyegin.dtonutil.BasketDto;
 import org.cs320.ozyegin.model.Advertisement;
 import org.cs320.ozyegin.model.Basket;
 import org.cs320.ozyegin.model.User;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,6 +59,16 @@ public class BasketServiceImpl implements BasketService {
             total += item.getQuantity() * advertService.findAdvertByID(item.getProduct_id()).getPrice();
         }
         return total;
+    }
+
+    @Override
+    public List<BasketDto> basketAdverts(List<Basket> basketList) {
+        List<BasketDto> basketDtos = new ArrayList<>(basketList.size());
+        for (int i = 0; i < basketList.size(); i++) {
+            basketDtos.add(i, new BasketDto(basketList.get(i).getId(), basketList.get(i).getBuyer_id(), basketList.get(i).getProduct_id(), basketList.get(i).getQuantity()));
+            basketDtos.get(i).setProduct(advertService.findAdvertByID(basketDtos.get(i).getProduct_id()));
+        }
+        return basketDtos;
     }
 
 

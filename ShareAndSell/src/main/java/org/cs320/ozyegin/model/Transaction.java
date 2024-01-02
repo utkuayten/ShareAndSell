@@ -14,7 +14,7 @@ public class Transaction {
     private Long buyer_id;
     private int quantity;
     private String address;
-
+    private Long seller_id;
     public Long getSeller_id() {
         return seller_id;
     }
@@ -23,7 +23,7 @@ public class Transaction {
         this.seller_id = seller_id;
     }
 
-    private Long seller_id;
+
     public Transaction(){
         super();
     }

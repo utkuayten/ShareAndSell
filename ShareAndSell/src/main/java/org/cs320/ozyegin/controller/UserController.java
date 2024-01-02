@@ -85,9 +85,11 @@ public class UserController {
         } else {
             session.setAttribute("msg", "Order is successful.");
             List<Basket> basket = basketService.findBasketByUser(user);
+            User seller = new User();
             for (Basket item:basket) {
                 int i = advertService.getQuantityById(item.getProduct_id()) - item.getQuantity();
 
+                seller = userService.findByID(advertService.findAdvertByID(item.getProduct_id()).getSeller_id());
                 if(i==0){
                     advertService.updateAdvertStat(item.getProduct_id());
                     advertService.updateAdvertQuantityByProductId(item.getProduct_id(),i);
@@ -95,7 +97,8 @@ public class UserController {
                     advertService.updateAdvertQuantityByProductId(item.getProduct_id(), i);
                 }
             }
-
+            walletService.findWalletByOwner(user).alterBalance(-totalPrice);
+            walletService.findWalletByOwner(seller).alterBalance(totalPrice);
             transactionService.createMultipleTransactionsByBasket(basket, address);
             basketService.deleteFromBasketByUser(user);
         }

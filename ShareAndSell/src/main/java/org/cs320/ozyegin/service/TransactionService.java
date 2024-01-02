@@ -11,7 +11,7 @@ import java.util.List;
 public interface TransactionService {
 
 
-    Transaction saveTransaction(Transaction transaction, User buyer, Basket basket, String address);
+    Transaction saveTransaction(Transaction transaction, User buyer, Basket basket, String address, User seller);
 
     List<Transaction> findAllTransactions();
 

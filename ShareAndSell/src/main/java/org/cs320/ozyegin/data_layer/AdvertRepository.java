@@ -14,29 +14,33 @@ import java.util.List;
 @Repository
 public interface AdvertRepository extends JpaRepository<Advertisement, Long> {
 
-    @Query("SELECT advert FROM Advertisement advert WHERE advert.title = :title")
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.title = :title AND advert.active=true")
     Advertisement findByTitle(@Param("title") String title);
-    @Query("SELECT advert FROM Advertisement advert WHERE advert.id = :id")
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.id = :id AND advert.active=true")
     Advertisement findByID(@Param("id") Long id);
 
-    @Query("SELECT advert FROM Advertisement advert WHERE LOWER(advert.title) LIKE LOWER(CONCAT('%', :query, '%'))")
+    @Query("SELECT advert FROM Advertisement advert WHERE LOWER(advert.title) LIKE LOWER(CONCAT('%', :query, '%')) AND advert.active=true")
     List<Advertisement> findByPartialTitle(@Param("query") String query);
 
-    @Query("SELECT advert FROM Advertisement advert ")
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.active=true")
     List<Advertisement> findAllAdverts();
 
-    @Query("SELECT advert FROM Advertisement advert WHERE advert.seller_id <> :userId")
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.seller_id <> :userId AND advert.active=true")
     List<Advertisement> findAllAdvertsExcludingUser(@Param("userId") Long userId);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Advertisement advert SET advert.quantity = :quantity WHERE advert.id = :product_id ")
+    @Query("UPDATE Advertisement advert SET advert.quantity = :quantity WHERE advert.id = :product_id  AND advert.active=true")
     void updateAdvertQuantityByProductId(@Param("product_id") Long product_id, @Param("quantity") int quantity);
 
-    @Query("SELECT advert.quantity FROM Advertisement advert WHERE advert.id = :id")
+    @Query("SELECT advert.quantity FROM Advertisement advert WHERE advert.id = :id AND advert.active=true")
     int getQuantById(@Param("id") Long id);
 
-    @Query("UPDATE Advertisement advert SET advert.active = false WHERE advert.id = :id")
+    @Transactional
+    @Modifying
+    @Query("UPDATE Advertisement advert SET advert.active = false WHERE advert.id = :id AND advert.active=true")
     void updateAdvertStat(@Param("id") Long id);
 
+    @Query("SELECT advert FROM Advertisement advert WHERE advert.id = :id")
+    Advertisement findByIdForOrder(@Param("id") Long id);
 }

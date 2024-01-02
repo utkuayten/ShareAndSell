@@ -1,7 +1,9 @@
 package org.cs320.ozyegin.controller;
 
 import jakarta.servlet.http.HttpSession;
+import org.cs320.ozyegin.data_layer.AdvertRepository;
 import org.cs320.ozyegin.data_layer.ImageRepository;
+import org.cs320.ozyegin.data_layer.TransactionRepository;
 import org.cs320.ozyegin.data_layer.UserRepository;
 import org.cs320.ozyegin.dtonutil.BasketDto;
 import org.cs320.ozyegin.model.*;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,6 +46,10 @@ public class UserController {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+    @Autowired
+    private AdvertRepository advertRepository;
     @GetMapping("/user/sell")
     public String advertPanel(Principal p, Model m, Advertisement advertisement){
         User user = userRepository.findByEmail(p.getName());
@@ -56,6 +63,7 @@ public class UserController {
         User seller_user = userRepository.findByEmail(p.getName());
         advert.setSeller_id(seller_user.getId());
         advert.setSeller_name(seller_user.getName());
+        advert.setActive(true);
         if (!(Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg"))) {
             return "redirect:/user/sell?error";
         }
@@ -78,26 +86,18 @@ public class UserController {
             session.setAttribute("msg", "Order is successful.");
             List<Basket> basket = basketService.findBasketByUser(user);
             for (Basket item:basket) {
-            int i = advertService.getQuantityById(item.getProduct_id()) - item.getQuantity();
-            if(i==0){
-                advertService.updateAdvertStat(item.getProduct_id());
-                advertService.updateAdvertQuantityByProductId(item.getProduct_id(),i);
-            }
-            else{
-                advertService.updateAdvertQuantityByProductId(item.getProduct_id(), i);
-            }
+                int i = advertService.getQuantityById(item.getProduct_id()) - item.getQuantity();
 
-
+                if(i==0){
+                    advertService.updateAdvertStat(item.getProduct_id());
+                    advertService.updateAdvertQuantityByProductId(item.getProduct_id(),i);
+                }else{
+                    advertService.updateAdvertQuantityByProductId(item.getProduct_id(), i);
+                }
             }
-
 
             transactionService.createMultipleTransactionsByBasket(basket, address);
             basketService.deleteFromBasketByUser(user);
-
-
-
-
-
         }
         return "redirect:/user/basket";
     }
@@ -202,8 +202,25 @@ public class UserController {
         return "redirect:/user/details/" + id;
     }
 
+    @GetMapping("/user/myOrders")
+    public String myOrders(Principal p, Model m) {
+        User user = userRepository.findByEmail(p.getName());
+        List<Transaction> transSold = transactionRepository.findSoldTransactions(user.getId());
+        List<Transaction> transBought = transactionRepository.findBoughtTransactions(user.getId());
 
+        List<Advertisement> ordersSold = new ArrayList<>();
+        List<Advertisement> ordersBought = new ArrayList<>();
 
+        for(Transaction transaction : transSold)
+            ordersSold.add(advertRepository.findByIdForOrder(transaction.getProduct_id()));
+
+        for(Transaction transaction : transBought)
+            ordersBought.add(advertRepository.findByIdForOrder(transaction.getProduct_id()));
+
+        m.addAttribute("sold", ordersSold);
+        m.addAttribute("bought", ordersBought);
+        return "orders";
+    }
 
 
 

@@ -48,7 +48,6 @@ public class TransactionServiceImp implements TransactionService {
     public List<Transaction> createMultipleTransactionsByBasket(List<Basket> basket, String address) {
         List<Transaction> transactions = new LinkedList<>();
         for (Basket item : basket) {
-            Advertisement advert = advertService.findAdvertByID(item.getProduct_id());
             User buyer = userRepository.findByID(item.getBuyer_id());
             transactions.add(saveTransaction(new Transaction(), buyer, item, address));
         }

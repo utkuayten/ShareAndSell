@@ -12,8 +12,8 @@ public interface AdvertService {
 
     Advertisement saveAdvertisement(Advertisement advertisement, MultipartFile file) throws IOException;
     List<Advertisement> findAllAdvertisements();
-
     List<Advertisement> findByPartialTitle(String title);
-
     Advertisement findAdvertByID(Long id);
+    List<Advertisement> findAllAdvertisementsExcludingUser(Long userId);
 }
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${advertisement.title}">Product Details</title>
+    <style>
+        body {
+            background-color: #eaf4ea; /* Light green */
+        }
+
+        .card {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #c8e6c9; /* Pale green */
+            border: 1px solid #006400; /* Dark green */
+            border-radius: 8px;
+        }
+
+        h1, p {
+            color: #006400; /* Dark green */
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1 th:text="${advertisement.title}">Product Details</h1>
+
+    <!-- Display other details of the product -->
+    <p th:text="${advertisement.description}">Product description goes here.</p>
+
+    <!-- Add more details as needed -->
+</div>
+</body>
+</html>

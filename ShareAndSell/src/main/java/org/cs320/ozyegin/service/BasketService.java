@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.util.List;
 
 public interface BasketService {
-    Basket saveBasket(Basket basket, Advertisement advertisement, int quantity, User user) throws IOException;
+    void saveBasket(Basket basket, Advertisement advertisement, int quantity, User user) throws IOException;
 
     List<Basket> findBasketByUser(User user);
 
     void deleteFromBasketByBasket(Basket basket);
 
     Basket findBasketById(Long id);
+
+    int totalPriceCalculator(List<Basket> basketList);
 }

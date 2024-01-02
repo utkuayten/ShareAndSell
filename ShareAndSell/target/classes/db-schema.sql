@@ -29,11 +29,10 @@ create TABLE if not exists wallets
 create TABLE if not exists transactions
 (
     id         SERIAL PRIMARY KEY,
-    seller_id  int,
-    buyer_id   int REFERENCES users (id),
     product_id int REFERENCES advertisements (id),
-    price      int,
+    buyer_id   int REFERENCES users (id),
     quantity   int,
+    address text,
     status     text
 );
 

@@ -14,5 +14,4 @@ public interface TransactionService {
 
     List<Transaction> findAllTransactions();
 
-    List<Transaction> findBasket(User buyer);
 }

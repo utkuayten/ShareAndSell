@@ -23,11 +23,9 @@ public class TransactionServiceImp implements TransactionService {
     public WalletRepository walletRepository;
     @Override
     public Transaction saveTransaction(Transaction transaction, User seller, User buyer, Advertisement advertisement) {
-        transaction.setStatus("STATUS_IN_BASKET");
-        transaction.setPrice(advertisement.getPrice() * transaction.getQuantity());
+        transaction.setStatus("STATUS_PENDING");
         transaction.setProduct_id(advertisement.getId());
         transaction.setBuyer_id(buyer.getId());
-        transaction.setSeller_id(seller.getId());
         return transactionRepository.save(transaction);
     }
 
@@ -36,10 +34,6 @@ public class TransactionServiceImp implements TransactionService {
         return transactionRepository.findAllTransactions();
     }
 
-    @Override
-    public List<Transaction> findBasket(User buyer) {
-        return transactionRepository.findBuyerTransactionByStatus(buyer.getId(), "STATUS_IN_BASKET");
-    }
 
 
 //    @Override

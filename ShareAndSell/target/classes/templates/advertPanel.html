@@ -1,18 +1,10 @@
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
-<head>
-    <meta charset="UTF-8">
-    <title>Sell Product</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
 <style>
 
-    body {
-        background-color: #eaf4ea; /* Light green */
+    section {
+        margin: 15px 15px 15px 15px ;
+        width: 20%;
+        min-width: 600px;
     }
-
     h3,
     p,
     li {
@@ -40,12 +32,14 @@
         border-color: #228B22; /* Forest green */
     }
 </style>
-<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<section>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 offset-md-8">
             <section class="adverts-table">
-                <div>
                     <div class="card">
                         <div class="card-header text-center fs-4">Product Selling Panel</div>
                         <div class="card-body">
@@ -77,11 +71,11 @@
                             </form>
                         </div>
                     </div>
-                </div>
             </section>
         </div>
 
     </div>
 </div>
-</body>
+
+</section>
 </html>

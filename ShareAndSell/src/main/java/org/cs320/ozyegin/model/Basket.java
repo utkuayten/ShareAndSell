@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import org.cs320.ozyegin.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Objects;
+
 @Entity
-@Table(name = "baskets")
+@Table(name = "basket")
 public class Basket {
 
 
@@ -62,6 +64,18 @@ public class Basket {
         this.quantity = quantity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Basket basket = (Basket) o;
+        return quantity == basket.quantity && Objects.equals(id, basket.id) && Objects.equals(buyer_id, basket.buyer_id) && Objects.equals(product_id, basket.product_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, buyer_id, product_id, quantity);
+    }
 
     @Override
     public String toString() {

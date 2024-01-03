@@ -60,6 +60,16 @@ public class TransactionServiceImp implements TransactionService {
         return transactions;
     }
 
+    @Override
+    public void deleteTransaction(Transaction transaction) {
+        transactionRepository.delete(transaction);
+    }
+
+    @Override
+    public Transaction findTransactionById(Long id) {
+        return transactionRepository.findTransactionBy_id(id);
+    }
+
 
 //    @Override
 //    public List<Transaction> findBasket(User user) {

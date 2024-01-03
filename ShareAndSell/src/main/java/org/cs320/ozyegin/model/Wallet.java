@@ -3,6 +3,8 @@ package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "wallets")
 public class Wallet {
@@ -58,4 +60,16 @@ public class Wallet {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wallet wallet = (Wallet) o;
+        return balance == wallet.balance && Objects.equals(id, wallet.id) && Objects.equals(owner_id, wallet.owner_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, owner_id, balance);
+    }
 }

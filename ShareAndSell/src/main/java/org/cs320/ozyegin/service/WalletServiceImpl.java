@@ -6,6 +6,9 @@ import org.cs320.ozyegin.model.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class WalletServiceImpl implements WalletService{
 
@@ -29,6 +32,26 @@ public class WalletServiceImpl implements WalletService{
     @Override
     public Wallet findWalletByOwner(User user) {
         return walletRepository.findByOwner_id(user.getId());
+    }
+
+    @Override
+    public Wallet findWalletByUserId(Long user_id) {
+        return walletRepository.findByOwner_id(user_id);
+    }
+
+    @Override
+    public Wallet findWalletById(Long id) {
+        return walletRepository.findBy_Id(id);
+    }
+
+    @Override
+    public void deleteWallet(Wallet wallet) {
+        walletRepository.delete(wallet);
+    }
+
+    @Override
+    public List<Wallet> findAllWallets() {
+        return walletRepository.findAll();
     }
 
 

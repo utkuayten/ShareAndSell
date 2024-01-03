@@ -12,6 +12,7 @@ import org.testcontainers.shaded.org.apache.commons.lang.RandomStringUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,6 +73,23 @@ class AdvertServiceTest {
         assertEquals(myAdvert, advertRepository.findByID(myAdvert.getId()));
     }
 
+    @Test
+    void findAdvertQuantity() {
+        List<Advertisement> advertisements = createRandomAdvertisement(1);
+        Advertisement myAdvert = advertisements.get(0);
+        advertRepository.save(myAdvert);
+        assertEquals(myAdvert.getQuantity(), advertService.getQuantityById(myAdvert.getId()));
+    }
+
+
+    @Test
+    void deleteAdvertisement() {
+        Advertisement advertisement = createRandomAdvertisement(1).get(0);
+        advertRepository.save(advertisement);
+        advertService.deleteAdvertisement(advertisement);
+        assertNull(advertRepository.findByID(advertisement.getId()));
+    }
+
 
     List<Advertisement> createRandomAdvertisement(int size) {
         List<Advertisement> advertisements = new ArrayList<>();
@@ -82,10 +100,9 @@ class AdvertServiceTest {
             advertisement.setSeller_name(RandomStringUtils.random(8));
             advertisement.setQuantity(((int) (Math.random() * 1000)));
             advertisement.setPrice(((int) (Math.random() * 1000)));
-            advertisement.setDate(null);
-            advertisement.setImageData(null);
-            advertisement.setSeller_id(null);
             advertisement.setActive(true);
+            //No need to give random variables for following:
+            advertisement.setSeller_id(ThreadLocalRandom.current().nextLong(1000L, 5000L + 1));
             advertisements.add(advertisement);
         }
         return advertisements;

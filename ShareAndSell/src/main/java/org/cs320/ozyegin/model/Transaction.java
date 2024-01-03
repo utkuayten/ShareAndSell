@@ -3,6 +3,8 @@ package org.cs320.ozyegin.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "transactions")
 public class Transaction {
@@ -89,5 +91,18 @@ public class Transaction {
                 ", product_id=" + product_id +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return quantity == that.quantity && Objects.equals(id, that.id) && Objects.equals(product_id, that.product_id) && Objects.equals(buyer_id, that.buyer_id) && Objects.equals(address, that.address) && Objects.equals(seller_id, that.seller_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, product_id, buyer_id, quantity, address, seller_id);
     }
 }

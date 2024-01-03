@@ -35,6 +35,11 @@ public class AdvertServiceImpl implements AdvertService{
     public List<Advertisement> findAllAdvertisementsExcludingUser(Long userId) {return advertRepository.findAllAdvertsExcludingUser(userId);}
 
     @Override
+    public void deleteAdvertisement(Advertisement advert) {
+        advertRepository.delete(advert);
+    }
+
+    @Override
     public List<Advertisement> findByPartialTitle(String title) {
         return advertRepository.findByPartialTitle(title);
     }

@@ -151,12 +151,13 @@ public class UserController {
     public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
         User user = userRepository.findByEmail(p.getName());
         Wallet wallet = walletService.findWalletByOwner(user);
-        System.out.println("New Balance: " + addBalance);
-        if (wallet != null) {
-            walletService.updateBalance(wallet,addBalance);
+        //System.out.println("New Balance: " + addBalance);
+        if (wallet != null && addBalance > 0) {
+            System.out.println("New Balance: " + addBalance);
+            walletService.updateBalance(wallet, addBalance);
+
         }
-        return "redirect:/user/profile";
-    }
+        return "redirect:/user/profile";}
 
     @GetMapping("/user/home")
     public String home(Principal p, Model m) {

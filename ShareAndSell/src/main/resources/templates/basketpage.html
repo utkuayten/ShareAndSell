@@ -163,15 +163,20 @@
                     <div class="item-details">
                         <div class="image">
                             <img th:src="${item.getProduct().getImage()}" alt="Product Photo"
-                                 style="width: 150px; height: 150px; border-radius: 85%;">
+                                 style="width: 200px; height: 200px;"> <!-- Adjust width and height as per your preference -->
                         </div>
                         <div class="text-info">
-                            <h3 class="title"><b th:text="${item.getProduct().getTitle()}"></b></h3>
-                            <h3 style="color: papayawhip; font-size: smaller; font-family: Arial,sans-serif"
-                                th:text="${item.getProduct().getDescription()}"></h3>
-                            <h3 th:text="'Price: ' + ${item.getProduct().getPrice()}"></h3>
+                            <h3 style="margin-bottom: 5px;"><b>Product Name</b></h3>
+                            <h3 class="title" th:text="${item.getProduct().getTitle()}"></h3>
+                            <h3 style="margin-bottom: 5px;"><b>Product Description</b></h3>
+                            <h3 class="description" th:text="${item.getProduct().getDescription()}"></h3>
+                            <h3 style="margin-bottom: 5px;"><b>Price</b></h3>
+                            <h3 class="Price: " th:text="${item.getProduct().getPrice()}"></h3>
+                            <h3 style="margin-bottom: 5px;"><b>Quantity </b></h3>
+                            <h3 class="quantity:" th:text="${item.getQuantity()}"></h3>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -184,8 +189,24 @@
                 <h2>Order Now !</h2>
                 <form method="post" th:action="@{/user/checkout}">
                     <label>
-                        <textarea name="address" class="address-input" placeholder="Type your address here..."
-                                  required></textarea>
+                        <h2>Country</h2>
+                        <input type="text" name="country" required>
+                    </label>
+                    <label>
+                        <h2>City</h2>
+                        <input type="text" name="city" required>
+                    </label>
+                    <label>
+                        <h2>State</h2>
+                        <input type="text" name="state" required>
+                    </label>
+                    <label>
+                        <h2>Street</h2>
+                        <input type="text" name="street" required>
+                    </label>
+                    <label>
+                        <h2>Building Name</h2>
+                        <input type="text" name="buildingName" required>
                     </label>
                     <input type="hidden" name="total_price" th:value="${total_price}">
                     <input type="hidden" name="wallet_balance" th:value="${wallet.balance}">

@@ -5,7 +5,9 @@
     <title th:text="${advertisement.title}">Product Details</title>
     <style>
         body {
-            background-color: #eaf4ea; /* Light green */
+            background-color: #006400; /* Light purple, change this to your desired color */
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
         .card {
@@ -24,9 +26,11 @@
 </head>
 <body>
 <div class="card">
+    <h2>Product Name</h2>
     <h1 th:text="${advertisement.title}">Product Details</h1>
 
     <!-- Display other details of the product -->
+    <h2>Product Description</h2>
     <p th:text="${advertisement.description}">Product description goes here.</p>
 
     <!-- Add more details as needed -->

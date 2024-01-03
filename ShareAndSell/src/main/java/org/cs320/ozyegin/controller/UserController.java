@@ -64,11 +64,19 @@ public class UserController {
     }
 
     @PostMapping("/user/checkout")
-    public String userCheckout(@RequestParam("address") String address,
-                               @RequestParam("total_price") int totalPrice,
-                               @RequestParam("wallet_balance") int walletBalance,
-                               HttpSession session,
-                               Principal p) {
+    public String userCheckout(
+            @RequestParam("country") String country,
+            @RequestParam("city") String city,
+            @RequestParam("street") String street,
+            @RequestParam("buildingName") String buildingName,
+            @RequestParam("total_price") int totalPrice,
+            @RequestParam("wallet_balance") int walletBalance,
+            @RequestParam("state") String state,
+            HttpSession session,
+            Principal p
+    ) {
+        String address = country + ", " + city + ", " + street + ", " + state + ", " + buildingName;
+
         User user = userService.findByEmail(p.getName());
 
         if (totalPrice > walletBalance) {

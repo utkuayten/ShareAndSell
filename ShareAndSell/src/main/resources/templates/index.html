@@ -1,18 +1,30 @@
+<style>
+    .welcome-section {
+        position: relative;
+        animation: slideRight 2s ease-in-out infinite alternate; /* Animation for sliding */
+        text-align: center;
+        margin-top: 300px;
+        color: #4CAF50;
+    }
+
+    @keyframes slideRight {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(50px); /* Adjust the value to control the distance of the slide */
+        }
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{base::layout(~{::section})}"
+      th:replace="~{base::layout(~{::section})}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+<!-- Importing the Pacifico font from Google Fonts -->
 
->
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
 
-</head>
-<body>
-<section>
-    <h1>Index Page</h1>
-
+<section class="welcome-section">
+    <h1 style="font-family: 'Pacifico', cursive;">Welcome to Share & Sell</h1>
 </section>
 
-</body>
 </html>

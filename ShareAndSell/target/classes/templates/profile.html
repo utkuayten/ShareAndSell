@@ -93,7 +93,7 @@
 
     <form th:action="@{/user/profile/confirmBalance}" method="post" >
       <label for="addBalance">Add Balance:</label>
-      <input type="text" id="addBalance" name="addBalance" placeholder="Enter amount" />
+      <input type="number" id="addBalance" name="addBalance" placeholder="Enter amount" required/>
       <input type="submit" value="Confirm">
     </form>
 

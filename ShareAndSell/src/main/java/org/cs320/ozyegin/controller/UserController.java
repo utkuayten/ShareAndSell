@@ -116,13 +116,18 @@ public class UserController {
         User buyer = userRepository.findByEmail(p.getName());
         Advertisement advert = advertService.findAdvertByID(advertID);
 
+        if(advert.getSeller_id()== buyer.getId()){
+            session.setAttribute("msg", "You cannot buy your own product");
+            return "redirect:/user/marketplace";
+        }
+        else{
         if(basketService.findProductQuantInBasket(advertID, buyer.getId()) >= advert.getQuantity()){
             session.setAttribute("msg", "You cannot order more than stocks.");
             return "redirect:/user/marketplace";
         }
         session.setAttribute("msg", "Product in basket !!");
         basketService.saveBasket(new Basket(), advert, quantity, buyer);
-        return "redirect:/user/marketplace";
+        return "redirect:/user/marketplace";}
     }
 
     @GetMapping("/user/profile")
@@ -146,12 +151,13 @@ public class UserController {
     public String confirmBalance(@RequestParam("addBalance") int addBalance,Principal p) {
         User user = userRepository.findByEmail(p.getName());
         Wallet wallet = walletService.findWalletByOwner(user);
-        System.out.println("New Balance: " + addBalance);
-        if (wallet != null) {
-            walletService.updateBalance(wallet,addBalance);
+        //System.out.println("New Balance: " + addBalance);
+        if (wallet != null && addBalance > 0) {
+            System.out.println("New Balance: " + addBalance);
+            walletService.updateBalance(wallet, addBalance);
+
         }
-        return "redirect:/user/profile";
-    }
+        return "redirect:/user/profile";}
 
     @GetMapping("/user/home")
     public String home(Principal p, Model m) {

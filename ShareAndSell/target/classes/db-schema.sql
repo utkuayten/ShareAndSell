@@ -33,7 +33,7 @@ create TABLE if not exists transactions
     buyer_id   int REFERENCES users (id),
     quantity   int,
     address text,
-    active bool
+    active  bool
 );
 
 create TABLE if not exists images

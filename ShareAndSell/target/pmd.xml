@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.55.0" timestamp="2024-01-03T04:13:31.540">
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/SpringApplication.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="61" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin" class="SpringApplication" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.context.annotation.ImportResource'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/controller/MainController.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="37" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.awt.geom.AffineTransform'
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.io.IOException'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.security.Principal'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="33" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.*'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="35" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.service.*'
+</violation>
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="60" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.web.bind.annotation.RequestParam'
+</violation>
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="55" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="MainController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.web.multipart.MultipartFile'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/controller/SearchAndFilterController.java">
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="62" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="SearchAndFilterController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.web.bind.annotation.RequestMapping'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/controller/UserController.java">
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="33" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="UserController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.*'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="35" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="UserController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.service.*'
+</violation>
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="49" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.controller" class="UserController" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.web.bind.annotation.*'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/data_layer/BasketRepository.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.data_layer" class="BasketRepository" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.Advertisement'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/data_layer/ImageRepository.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.data_layer" class="ImageRepository" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Optional'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/data_layer/TransactionRepository.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.data_layer" class="TransactionRepository" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.Advertisement'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/data_layer/WalletRepository.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="36" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.data_layer" class="WalletRepository" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.User'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/dtonutil/BasketDto.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="47" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.dtonutil" class="BasketDto" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.service.AdvertService'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="51" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.dtonutil" class="BasketDto" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.service.AdvertServiceImpl'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="62" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.dtonutil" class="BasketDto" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.beans.factory.annotation.Autowired'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/dtonutil/ImageUtil.java">
+<violation beginline="23" endline="24" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.cs320.ozyegin.dtonutil" class="ImageUtil" method="compressImage" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="39" endline="40" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.cs320.ozyegin.dtonutil" class="ImageUtil" method="decompressImage" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/model/Advertisement.java">
+<violation beginline="122" endline="122" begincolumn="75" endcolumn="75" rule="UnnecessarySemicolon" ruleset="Code Style" package="org.cs320.ozyegin.model" class="Advertisement" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarysemicolon" priority="3">
+Unnecessary semicolon
+</violation>
+<violation beginline="147" endline="147" begincolumn="20" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Error Prone" package="org.cs320.ozyegin.model" class="Advertisement" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_errorprone.html#overridebothequalsandhashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/model/Basket.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="47" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.model" class="Basket" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.service.AdvertService'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="62" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.model" class="Basket" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.beans.factory.annotation.Autowired'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/model/Image.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.model" class="Image" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'jdk.jfr.DataAmount'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="25" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.model" class="Image" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Objects'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/AdvertService.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="46" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="AdvertService" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.stereotype.Service'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/AdvertServiceImpl.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="55" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="AdvertServiceImpl" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.data.repository.query.Param'
+</violation>
+<violation beginline="25" endline="25" begincolumn="37" endcolumn="76" rule="UselessParentheses" ruleset="Code Style" package="org.cs320.ozyegin.service" class="AdvertServiceImpl" method="saveAdvertisement" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/BasketService.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="55" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="BasketService" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.web.multipart.MultipartFile'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/BasketServiceImpl.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="28" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="BasketServiceImpl" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.LinkedList'
+</violation>
+<violation beginline="62" endline="62" begincolumn="23" endcolumn="35" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.cs320.ozyegin.service" class="BasketServiceImpl" method="totalPriceCalculator" variable="advertisement" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'advertisement'.
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/ImageService.java">
+<violation beginline="13" endline="13" begincolumn="12" endcolumn="87" rule="UnnecessaryModifier" ruleset="Code Style" package="org.cs320.ozyegin.service" class="ImageService" method="uploadImageForProfile" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'uploadImageForProfile': the method is declared in an interface type
+</violation>
+<violation beginline="14" endline="14" begincolumn="12" endcolumn="48" rule="UnnecessaryModifier" ruleset="Code Style" package="org.cs320.ozyegin.service" class="ImageService" method="findImageByOwner_id" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'findImageByOwner_id': the method is declared in an interface type
+</violation>
+<violation beginline="16" endline="16" begincolumn="12" endcolumn="48" rule="UnnecessaryModifier" ruleset="Code Style" package="org.cs320.ozyegin.service" class="ImageService" method="getImage" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getImage': the method is declared in an interface type
+</violation>
+<violation beginline="18" endline="18" begincolumn="12" endcolumn="62" rule="UnnecessaryModifier" ruleset="Code Style" package="org.cs320.ozyegin.service" class="ImageService" method="getImageDataByUserId" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getImageDataByUserId': the method is declared in an interface type
+</violation>
+<violation beginline="20" endline="20" begincolumn="12" endcolumn="87" rule="UnnecessaryModifier" ruleset="Code Style" package="org.cs320.ozyegin.service" class="ImageService" method="uploadImageForProduct" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'uploadImageForProduct': the method is declared in an interface type
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/TransactionService.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="TransactionService" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.Advertisement'
+</violation>
+</file>
+<file name="/Users/utkuayten/Desktop/ShareAndSell/ShareAndSell/src/main/java/org/cs320/ozyegin/service/TransactionServiceImp.java">
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.cs320.ozyegin.service" class="TransactionServiceImp" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.cs320.ozyegin.model.Advertisement'
+</violation>
+</file>
+</pmd>

@@ -67,6 +67,11 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
+    public void deleteBasket(Basket basket) {
+        basketRepository.delete(basket);
+    }
+
+    @Override
     public List<BasketDto> basketAdverts(List<Basket> basketList) {
         List<BasketDto> basketDtos = new ArrayList<>(basketList.size());
         for (int i = 0; i < basketList.size(); i++) {

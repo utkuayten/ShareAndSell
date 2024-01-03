@@ -17,4 +17,8 @@ public interface TransactionService {
 
     List<Transaction> createMultipleTransactionsByBasket(List<Basket> basket, String address);
 
+    void deleteTransaction(Transaction transaction);
+
+    Transaction findTransactionById(Long id);
+
 }

@@ -14,14 +14,14 @@ create TABLE if not exists advertisements
     description text,
     quantity    int,
     price       int,
-    seller_name text references users(name),
-    seller_id   int references users (id)
+    seller_name text,
+    seller_id   int
 );
 
 create TABLE if not exists wallets
 (
     id       SERIAL PRIMARY KEY,
-    owner_id int references users (id),
+    owner_id int,
     balance  int
 );
 
@@ -29,8 +29,8 @@ create TABLE if not exists wallets
 create TABLE if not exists transactions
 (
     id         SERIAL PRIMARY KEY,
-    product_id int REFERENCES advertisements (id),
-    buyer_id   int REFERENCES users (id),
+    product_id int,
+    buyer_id   int,
     quantity   int,
     address text,
     active  bool
@@ -49,7 +49,7 @@ create TABLE if not exists images
 CREATE TABLE IF NOT EXISTS basket
 (
     id         SERIAL PRIMARY KEY,
-    buyer_id   INT REFERENCES users (id),
+    buyer_id   INT,
     quantity   INT,
-    product_id INT REFERENCES advertisements (id)
+    product_id INT
 );

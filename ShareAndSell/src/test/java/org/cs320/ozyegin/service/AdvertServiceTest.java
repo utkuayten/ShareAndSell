@@ -31,11 +31,15 @@ class AdvertServiceTest {
     protected WalletRepository walletRepository;
     @Autowired
     protected ImageRepository imageRepository;
+    @Autowired
+    protected TransactionRepository transactionRepository;
+
 
 
     @BeforeEach
     void setUp() {
         basketRepository.deleteAll();
+        transactionRepository.deleteAll();
         advertRepository.deleteAll();
         walletRepository.deleteAll();
         imageRepository.deleteAll();
@@ -81,6 +85,7 @@ class AdvertServiceTest {
             advertisement.setDate(null);
             advertisement.setImageData(null);
             advertisement.setSeller_id(null);
+            advertisement.setActive(true);
             advertisements.add(advertisement);
         }
         return advertisements;
